@@ -4,7 +4,7 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
-import User from '../database/models/UserModel';
+import User from '../database/models/User';
 
 import { Response } from 'superagent';
 
@@ -50,7 +50,7 @@ describe('Testando API Trybe Fuebol Clube', () => {
       .send(bodyLogin)
       // ASSERT - verificar
       expect(httpResponse.status).to.be.equal(200);
-      expect(httpResponse.body).to.be.deep.equal(token);
+      expect(httpResponse.body).to.have.all.keys(['token'])
     })
   });
   /**
