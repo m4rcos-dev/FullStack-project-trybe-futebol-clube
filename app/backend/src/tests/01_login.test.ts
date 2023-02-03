@@ -7,7 +7,6 @@ import { app } from '../app';
 import User from '../database/models/UserModel';
 
 import { Response } from 'superagent';
-import { after, before } from 'node:test';
 
 chai.use(chaiHttp);
 
@@ -18,7 +17,7 @@ describe('Testando API Trybe Fuebol Clube', () => {
       // TRIPLE AAA
       // ARRANGE - arranjar / arrumar
       const token = {
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTI3MTg5fQ.XS_9AA82iNoiVaASi0NtJpqOQ_gHSHhxrpIdigiT-fc" // Aqui deve ser o token gerado pelo backend.
+        token: 'eyJhbGciOiJIUzI1NiIsIn' // Aqui deve ser o token gerado pelo backend.
       }
 
       const resultFindOne = {
@@ -33,13 +32,13 @@ describe('Testando API Trybe Fuebol Clube', () => {
         password: "anypassword"
       }
 
-      before(async () => {
+      beforeEach(async () => {
         sinon
           .stub(User, 'findOne')
           .resolves(resultFindOne as User)
       });
 
-      after(async () => {
+      afterEach(async () => {
         (User.findOne as sinon.SinonStub).restore();
       });
 
