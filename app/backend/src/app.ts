@@ -1,4 +1,5 @@
 import * as express from 'express';
+import loginRouter from './routes/loginRouter';
 
 class App {
   public app: express.Express;
@@ -10,9 +11,7 @@ class App {
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
-    this.app.post('/login', (req, res) => res
-      .status(200)
-      .json({ token: 'eyJhbGciOiJIUzI1NiIsIn' }));
+    this.routes();
   }
 
   private config():void {
@@ -25,6 +24,10 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+  }
+
+  private routes(): void {
+    this.app.use('/login', loginRouter);
   }
 
   public start(PORT: string | number):void {
