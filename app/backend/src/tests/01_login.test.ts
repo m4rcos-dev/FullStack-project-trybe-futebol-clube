@@ -66,10 +66,12 @@ describe('Testando API Trybe Fuebol Clube', () => {
     })
 
     it('Retorna status 401 e menssagem de erro ao tentar fazer login com email ou password errado', async () => {
+      // ACT - agir / executar
       const httpResponse = await chai
         .request(app)
         .post('/login')
         .send(loginEmailOrPasswordInvalid)
+      // ASSERT - verificar
       expect(httpResponse.status).to.equal(401);
       expect(httpResponse.body).to.be.deep.equal({ message: 'Incorrect email or password'});
     })
