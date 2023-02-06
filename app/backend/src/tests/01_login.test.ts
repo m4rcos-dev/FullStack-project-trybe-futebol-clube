@@ -67,4 +67,5 @@ describe('Testando API Trybe Fuebol Clube', () => {
       expect(httpResponse.body).to.be.deep.equal({ message: "All fields must be filled" })
     })
   });
+  
 });
