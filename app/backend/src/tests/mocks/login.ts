@@ -21,4 +21,9 @@ const loginWhitoutPassword = {
   password: "",
 }
 
-export { resultFindOne, bodyLogin, loginWhitoutEmail, loginWhitoutPassword }
+const loginEmailOrPasswordInvalid = {
+  email: "teste@anyemail.com",
+  password: "testepassword"
+}
+
+export { resultFindOne, bodyLogin, loginWhitoutEmail, loginWhitoutPassword, loginEmailOrPasswordInvalid }

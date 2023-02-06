@@ -8,7 +8,7 @@ import User from '../database/models/User';
 
 import { Response } from 'superagent';
 import tokenGenerate from '../utils/tokenGenerate';
-import { bodyLogin, loginWhitoutEmail, loginWhitoutPassword, resultFindOne } from './mocks/login';
+import { bodyLogin, loginEmailOrPasswordInvalid, loginWhitoutEmail, loginWhitoutPassword, resultFindOne } from './mocks/login';
 
 
 
@@ -66,6 +66,14 @@ describe('Testando API Trybe Fuebol Clube', () => {
       expect(httpResponse.status).to.equal(400);
       expect(httpResponse.body).to.be.deep.equal({ message: "All fields must be filled" })
     })
+
+    it('Retorna status 401 e menssagem de erro ao tentar fazer login com email ou password errado', async () => {
+      const httpResponse = await chai
+        .request(app)
+        .post('/login')
+        .send(loginEmailOrPasswordInvalid)
+      expect(httpResponse.status).to.equal(401);
+      expect(httpResponse.body).to.be.deep.equal({ message: 'Incorrect email or password'});
+    })
   });
-  
 });
