@@ -8,6 +8,9 @@ import User from '../database/models/User';
 
 import { Response } from 'superagent';
 import tokenGenerate from '../utils/tokenGenerate';
+import { bodyLogin, loginWhitoutEmail, resultFindOne } from './mocks/login';
+
+
 
 chai.use(chaiHttp);
 
@@ -17,25 +20,8 @@ describe('Testando API Trybe Fuebol Clube', () => {
   describe('Testa endpoint /login', () => {
     // TRIPLE AAA
     // ARRANGE - arranjar / arrumar
-    const resultFindOne = {
-      id: 1,
-      username: 'anyuser',
-      role: 'anyrole',
-      email: 'any@anyemail.com',
-      password: 'anypassword',
-    }
 
     const token = tokenGenerate(resultFindOne);
-
-    const bodyLogin = {
-      email: "any@anyemail.com",
-      password: "anypassword"
-    }
-
-    const loginWhitoutEmail = {
-      email: "",
-      password: "anypassword",
-    }
 
     beforeEach(async () => {
       sinon
@@ -68,33 +54,4 @@ describe('Testando API Trybe Fuebol Clube', () => {
       expect(httpResponse.body).to.be.deep.equal({ message: "All fields must be filled" })
     })
   });
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
-
-  // let chaiHttpResponse: Response;
-
-  // before(async () => {
-  //   sinon
-  //     .stub(Example, "findOne")
-  //     .resolves({
-  //       ...<Seu mock>
-  //     } as Example);
-  // });
-
-  // after(()=>{
-  //   (Example.findOne as sinon.SinonStub).restore();
-  // })
-
-  // it('...', async () => {
-  //   chaiHttpResponse = await chai
-  //      .request(app)
-  //      ...
-
-  //   expect(...)
-  // });
-
-  // it('Seu sub-teste', () => {
-  //   expect(false).to.be.eq(true);
-  // });
 });
