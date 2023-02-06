@@ -11,7 +11,7 @@ export default class LoginService implements ILoginService {
 
   async assinInUser(user: ILogin): Promise<ILoginResult> {
     const result = await this._userModel.findByEmail(user.email);
-    if (!result) return { status: 400, message: 'invalid' };
+    if (!result) return { status: 400, message: 'invalid e-mail or password' };
     const token = tokenGenerate(result);
     return { status: 200, token };
   }
