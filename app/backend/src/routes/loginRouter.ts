@@ -6,7 +6,6 @@ import UserSequelizeRepository from '../repository/sequelize/UserSequelizeReposi
 
 const router = Router();
 
-// Outra forma de fazer com class porem o linter reclama do this.
 const userSequilizeRepository = new UserSequelizeRepository();
 const loginUserModel = new UserModel(userSequilizeRepository);
 const loginService = new LoginService(loginUserModel);
