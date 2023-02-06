@@ -11,7 +11,6 @@ import tokenGenerate from '../utils/tokenGenerate';
 import { bodyLogin, loginEmailOrPasswordInvalid, loginWhitoutEmail, loginWhitoutPassword, resultFindOne } from './mocks/login';
 
 
-
 chai.use(chaiHttp);
 
 const { expect } = chai;
@@ -20,7 +19,6 @@ describe('Testando API Trybe Fuebol Clube', () => {
   describe('Testa endpoint /login', () => {
     // TRIPLE AAA
     // ARRANGE - arranjar / arrumar
-
     const token = tokenGenerate(resultFindOne);
 
     beforeEach(async () => {
