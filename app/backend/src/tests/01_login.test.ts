@@ -32,6 +32,11 @@ describe('Testando API Trybe Fuebol Clube', () => {
       password: "anypassword"
     }
 
+    const loginWhitoutEmail = {
+      email: "",
+      password: "anypassword",
+    }
+
     beforeEach(async () => {
       sinon
         .stub(User, 'findOne')
@@ -52,6 +57,15 @@ describe('Testando API Trybe Fuebol Clube', () => {
       expect(httpResponse.status).to.equal(200);
       expect(httpResponse.body).to.have.all.keys(['token']);
       expect(httpResponse.body).to.be.deep.equal({token});
+    });
+
+    it('Retorna status 400 e menssagem de erro ao tentar fazer login sem informar o email', async () => {
+      const httpResponse =  await chai
+            .request(app)
+            .post('/login')
+            .send(loginWhitoutEmail)
+      expect(httpResponse.status).to.equal(400);
+      expect(httpResponse.body).to.be.deep.equal({ message: "All fields must be filled" })
     })
   });
   /**
