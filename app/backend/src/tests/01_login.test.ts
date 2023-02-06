@@ -8,7 +8,7 @@ import User from '../database/models/User';
 
 import { Response } from 'superagent';
 import tokenGenerate from '../utils/tokenGenerate';
-import { bodyLogin, loginWhitoutEmail, resultFindOne } from './mocks/login';
+import { bodyLogin, loginWhitoutEmail, loginWhitoutPassword, resultFindOne } from './mocks/login';
 
 
 
@@ -42,16 +42,25 @@ describe('Testando API Trybe Fuebol Clube', () => {
       // ASSERT - verificar
       expect(httpResponse.status).to.equal(200);
       expect(httpResponse.body).to.have.all.keys(['token']);
-      expect(httpResponse.body).to.be.deep.equal({token});
+      expect(httpResponse.body).to.be.deep.equal({ token });
     });
 
     it('Retorna status 400 e menssagem de erro ao tentar fazer login sem informar o email', async () => {
       // ACT - agir / executar
-      const httpResponse =  await chai
-            .request(app)
-            .post('/login')
-            .send(loginWhitoutEmail)
+      const httpResponse = await chai
+        .request(app)
+        .post('/login')
+        .send(loginWhitoutEmail)
       // ASSERT - verificar
+      expect(httpResponse.status).to.equal(400);
+      expect(httpResponse.body).to.be.deep.equal({ message: "All fields must be filled" })
+    });
+
+    it('Retorna status 400 e menssagem de erro ao tentar fazer login sem informar o password', async () => {
+      const httpResponse = await chai
+        .request(app)
+        .post('/login')
+        .send(loginWhitoutPassword)
       expect(httpResponse.status).to.equal(400);
       expect(httpResponse.body).to.be.deep.equal({ message: "All fields must be filled" })
     })

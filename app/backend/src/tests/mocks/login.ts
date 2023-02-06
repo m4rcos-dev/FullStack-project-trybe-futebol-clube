@@ -16,4 +16,9 @@ const loginWhitoutEmail = {
   password: "anypassword",
 }
 
-export { resultFindOne, bodyLogin, loginWhitoutEmail }
+const loginWhitoutPassword = {
+  email: "any@anyemail.com",
+  password: "",
+}
+
+export { resultFindOne, bodyLogin, loginWhitoutEmail, loginWhitoutPassword }
