@@ -7,6 +7,7 @@ import { app } from '../app';
 import User from '../database/models/User';
 
 import { Response } from 'superagent';
+import tokenGenerate from '../utils/tokenGenerate';
 
 chai.use(chaiHttp);
 
@@ -14,43 +15,43 @@ const { expect } = chai;
 
 describe('Testando API Trybe Fuebol Clube', () => {
   describe('Testa endpoint /login', () => {
-      // TRIPLE AAA
-      // ARRANGE - arranjar / arrumar
-      const token = {
-        token: 'eyJhbGciOiJIUzI1NiIsIn' // Aqui deve ser o token gerado pelo backend.
-      }
+    // TRIPLE AAA
+    // ARRANGE - arranjar / arrumar
+    const resultFindOne = {
+      id: 1,
+      username: 'anyuser',
+      role: 'anyrole',
+      email: 'any@anyemail.com',
+      password: 'anypassword',
+    }
 
-      const resultFindOne = {
-        id: 1,
-        username: 'anyuser',
-        role: 'anyrole',
-        email: 'any@email.com'
-      }
+    const token = tokenGenerate(resultFindOne);
 
-      const bodyLogin = {
-        email: "any@anyemail.com",
-        password: "anypassword"
-      }
+    const bodyLogin = {
+      email: "any@anyemail.com",
+      password: "anypassword"
+    }
 
-      beforeEach(async () => {
-        sinon
-          .stub(User, 'findOne')
-          .resolves(resultFindOne as User)
-      });
+    beforeEach(async () => {
+      sinon
+        .stub(User, 'findOne')
+        .resolves(resultFindOne as User)
+    });
 
-      afterEach(async () => {
-        (User.findOne as sinon.SinonStub).restore();
-      });
+    afterEach(async () => {
+      (User.findOne as sinon.SinonStub).restore();
+    });
 
     it('Retorna um token ao se logar corretamente', async () => {
       // ACT - agir / executar
       const httpResponse = await chai
-      .request(app)
-      .post('/login')
-      .send(bodyLogin)
+        .request(app)
+        .post('/login')
+        .send(bodyLogin)
       // ASSERT - verificar
-      expect(httpResponse.status).to.be.equal(200);
-      expect(httpResponse.body).to.have.all.keys(['token'])
+      expect(httpResponse.status).to.equal(200);
+      expect(httpResponse.body).to.have.all.keys(['token']);
+      expect(httpResponse.body).to.be.deep.equal({token});
     })
   });
   /**

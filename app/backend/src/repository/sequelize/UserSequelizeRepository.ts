@@ -6,7 +6,7 @@ export default class UserSequelizeRepository implements IUserRepository {
 
   async findByEmail(email: string): Promise<IUser | null> {
     const user = await this.userModel
-      .findOne({ where: { email }, attributes: { exclude: ['password'] } });
+      .findOne({ where: { email } });
     return user;
   }
 }
