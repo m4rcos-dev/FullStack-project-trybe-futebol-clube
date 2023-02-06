@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import validateLogin from '../middleware/validateLogin';
 import LoginController from '../controller/LoginController';
 import LoginService from '../services/LoginService';
 import UserModel from '../models/UserModel';
@@ -11,6 +12,6 @@ const loginUserModel = new UserModel(userSequilizeRepository);
 const loginService = new LoginService(loginUserModel);
 const loginController = new LoginController(loginService);
 
-router.post('/', (req, res) => loginController.asinInUser(req, res));
+router.post('/', validateLogin, (req, res) => loginController.asinInUser(req, res));
 
 export default router;
