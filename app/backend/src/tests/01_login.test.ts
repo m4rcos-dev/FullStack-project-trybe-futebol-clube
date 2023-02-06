@@ -57,10 +57,12 @@ describe('Testando API Trybe Fuebol Clube', () => {
     });
 
     it('Retorna status 400 e menssagem de erro ao tentar fazer login sem informar o password', async () => {
+      // ACT - agir / executar
       const httpResponse = await chai
         .request(app)
         .post('/login')
         .send(loginWhitoutPassword)
+      // ASSERT - verificar
       expect(httpResponse.status).to.equal(400);
       expect(httpResponse.body).to.be.deep.equal({ message: "All fields must be filled" })
     })
