@@ -14,4 +14,8 @@ export default class LoginController {
     if (message) return res.status(status).json({ message });
     return res.status(status).json({ token });
   }
+
+  async validUser(_req: Request, res: Response): Promise<Response | void> {
+    return res.status(200).json({ role: 'admin' });
+  }
 }
