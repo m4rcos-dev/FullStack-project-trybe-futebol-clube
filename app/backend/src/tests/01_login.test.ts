@@ -75,5 +75,16 @@ describe('Testando API Trybe Fuebol Clube', () => {
       expect(httpResponse.status).to.equal(401);
       expect(httpResponse.body).to.be.deep.equal({ message: 'Incorrect email or password'});
     })
+
+    describe('Testa endpoint /login/validate', () => {
+      it('Retorna status 200 com um objeto contendo o role do user', async () => {
+        const httpResponse = await chai
+          .request(app)
+          .get('/login/validate')
+          .set('Authorization', token)
+        expect(httpResponse.status).to.equal(200);
+        expect(httpResponse.body).to.be.deep.equal(resultFindOne.role);
+      })
+    })
   });
 });
