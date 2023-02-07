@@ -16,6 +16,7 @@ export default class LoginController {
   }
 
   async validUser(_req: Request, res: Response): Promise<Response | void> {
-    return res.status(200).json({ role: 'admin' });
+    const { status, role } = await this._loginService.validUser();
+    return res.status(status).json({ role });
   }
 }

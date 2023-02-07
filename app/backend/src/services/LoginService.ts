@@ -1,5 +1,5 @@
 import { IUserModel } from '../interfaces/UserInterface';
-import { ILogin, ILoginResult, ILoginService } from '../interfaces/LoginInterface';
+import { ILogin, ILoginResult, ILoginService, IValidUser } from '../interfaces/LoginInterface';
 import tokenGenerate from '../utils/tokenGenerate';
 import bcryptVerify from '../utils/bcrypt';
 
@@ -18,5 +18,9 @@ export default class LoginService implements ILoginService {
     }
     const token = tokenGenerate(result);
     return { status: 200, token };
+  }
+
+  async validUser(): Promise<IValidUser> {
+    return { status: 200, role: 'admin' };
   }
 }
