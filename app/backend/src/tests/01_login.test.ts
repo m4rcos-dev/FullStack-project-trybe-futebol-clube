@@ -78,10 +78,12 @@ describe('Testando API Trybe Fuebol Clube', () => {
 
     describe('Testa endpoint /login/validate', () => {
       it('Retorna status 200 com um objeto contendo o role do user', async () => {
+        // ACT - agir / executar
         const httpResponse = await chai
           .request(app)
           .get('/login/validate')
           .set('Authorization', token)
+        // ASSERT - verificar
         expect(httpResponse.status).to.equal(200);
         expect(httpResponse.body).to.be.deep.equal({role: resultFindOne.role});
       })
