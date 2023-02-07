@@ -9,11 +9,6 @@ export interface ILoginResult {
   message?: string,
 }
 
-export interface IValidUser extends ILoginResult {
-  role: string;
-}
-
 export interface ILoginService {
   assinInUser(user: ILogin): Promise<ILoginResult>
-  validUser(): Promise<IValidUser>
 }

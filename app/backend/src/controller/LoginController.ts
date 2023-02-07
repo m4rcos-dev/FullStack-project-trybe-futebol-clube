@@ -14,9 +14,4 @@ export default class LoginController {
     if (message) return res.status(status).json({ message });
     return res.status(status).json({ token });
   }
-
-  async validUser(_req: Request, res: Response): Promise<Response | void> {
-    const { status, role } = await this._loginService.validUser();
-    return res.status(status).json({ role });
-  }
 }
