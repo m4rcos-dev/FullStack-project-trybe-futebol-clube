@@ -83,7 +83,7 @@ describe('Testando API Trybe Fuebol Clube', () => {
           .get('/login/validate')
           .set('Authorization', token)
         expect(httpResponse.status).to.equal(200);
-        expect(httpResponse.body).to.be.deep.equal(resultFindOne.role);
+        expect(httpResponse.body).to.be.deep.equal({role: resultFindOne.role});
       })
     })
   });

@@ -28,6 +28,7 @@ class App {
 
   private routes(): void {
     this.app.use('/login', loginRouter);
+    this.app.use('/login/validate', loginRouter);
   }
 
   public start(PORT: string | number):void {
