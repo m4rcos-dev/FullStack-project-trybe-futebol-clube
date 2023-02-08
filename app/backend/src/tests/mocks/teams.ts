@@ -17,4 +17,6 @@ const resultTeams = [
   { id: 16, teamName: 'São Paulo' },
 ];
 
-export { resultTeams };
+const resultTeam = { id: 1, teamName: 'Avaí/Kindermann' };
+
+export { resultTeams, resultTeam };
