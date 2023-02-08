@@ -39,21 +39,6 @@ describe('Testa endpoint /teams', () => {
   });
 
   describe('Testa endpoint /temas/:id', () => {
-    //TRIPLE AA
-    // ARRANGE - arranjar / arrumar
-    // beforeEach(async () => {
-    //   sinon
-    //     .stub(Teams, 'findOne')
-    //     .resolves(resultTeam as Teams)
-    // });
-
-    // afterEach(async () => {
-    //   (Teams.findOne as sinon.SinonStub).restore();
-    // });
-
-    const id = 1;
-    const idNull = 100;
-
     it('Retorna status 200 e um json contendo apenas um team', async () => {
       //ACT - agir / executar
       const httpResponse = await chai
