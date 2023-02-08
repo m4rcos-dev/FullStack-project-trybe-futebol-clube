@@ -4,3 +4,12 @@ export interface ITeams {
     teamName: string;
   }
 }
+
+export interface ITeamsResult {
+  status: number,
+  result: ITeams,
+}
+
+export interface ITeamsService {
+  getAll(): Promise<ITeamsResult>
+}

@@ -5,7 +5,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import Teams from '../database/models/Teams';
-import { resultFindAll } from './mocks/teams';
+import { resultTeams } from './mocks/teams';
 
 chai.use(chaiHttp);
 
@@ -17,7 +17,7 @@ describe('Testa endpoint /teams', () => {
   beforeEach(async () => {
     sinon
       .stub(Teams, 'findAll')
-      .resolves(resultFindAll as unknown as Teams[])
+      .resolves(resultTeams as unknown as Teams[])
   });
 
   afterEach(async () => {
@@ -31,6 +31,6 @@ describe('Testa endpoint /teams', () => {
       .get('/teams')
     // ASSERT - verificar
     expect(httpResponse.status).to.equal(200);
-    expect(httpResponse.body).to.be.deep.equal(resultFindAll);
+    expect(httpResponse.body).to.be.deep.equal(resultTeams);
   })
 })
