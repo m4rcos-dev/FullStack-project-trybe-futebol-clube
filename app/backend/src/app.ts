@@ -31,7 +31,6 @@ class App {
     this.app.use('/login', loginRouter);
     this.app.use('/login/validate', loginRouter);
     this.app.use('/teams', teamsRouter);
-    // this.app.use('/teams/:id', teamsRouter);
   }
 
   public start(PORT: string | number):void {
