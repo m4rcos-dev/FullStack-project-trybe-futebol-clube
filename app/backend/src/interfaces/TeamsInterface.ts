@@ -17,3 +17,7 @@ export interface ITeamsService {
 export interface ITeamsModel {
   getAll(): Promise<ITeams>
 }
+
+export interface ITeamsRepository {
+  getAll(): Promise<ITeams>
+}
