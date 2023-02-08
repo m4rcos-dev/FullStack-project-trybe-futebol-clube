@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { resultFindAll } from '../tests/mocks/teams';
+import TeamsController from '../controller/TeamsController';
 
 const router = Router();
 
-router.get('/', (req, res) => res.status(200).json(resultFindAll));
+const teamsController = new TeamsController();
+
+router.get('/', (req, res) => teamsController.getAll(req, res));
 
 export default router;
