@@ -3,7 +3,6 @@ import {
   ITeamsModel,
   ITeamsResult,
   ITeamsService } from '../interfaces/TeamsInterface';
-import { resultTeam } from '../tests/mocks/teams';
 
 export default class TeamsService implements ITeamsService {
   private _teamsModel: ITeamsModel;
@@ -18,8 +17,8 @@ export default class TeamsService implements ITeamsService {
   }
 
   async getTeam(id: string): Promise<ITeamResult> {
-    console.log(id);
-    const result = resultTeam;
+    const result = await this._teamsModel.getTeam(id);
+    if (!result) return { status: 400, message: 'team not exist' };
     return { status: 200, result };
   }
 }

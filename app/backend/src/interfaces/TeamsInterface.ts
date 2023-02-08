@@ -17,7 +17,7 @@ export interface ITeamsResult {
 
 export interface ITeamResult {
   status: number,
-  result: ITeam,
+  result?: ITeam,
   message?: string,
 }
 
@@ -28,6 +28,7 @@ export interface ITeamsService {
 
 export interface ITeamsModel {
   getAll(): Promise<ITeams>
+  getTeam(id: string): Promise<ITeam>
 }
 
 export interface ITeamsRepository {
