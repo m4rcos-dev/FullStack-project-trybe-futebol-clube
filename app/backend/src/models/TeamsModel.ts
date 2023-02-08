@@ -1,4 +1,3 @@
-import { resultTeam } from '../tests/mocks/teams';
 import { ITeam, ITeams, ITeamsModel, ITeamsRepository } from '../interfaces/TeamsInterface';
 
 export default class TeamsModel implements ITeamsModel {
@@ -14,8 +13,7 @@ export default class TeamsModel implements ITeamsModel {
   }
 
   async getTeam(id: string): Promise<ITeam> {
-    console.log(id);
-    const result = resultTeam;
+    const result = await this._teamsRepository.getTeam(id);
     return result;
   }
 }

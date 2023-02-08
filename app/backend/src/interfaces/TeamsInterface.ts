@@ -33,4 +33,5 @@ export interface ITeamsModel {
 
 export interface ITeamsRepository {
   getAll(): Promise<ITeams>
+  getTeam(id: string): Promise<ITeam>
 }
