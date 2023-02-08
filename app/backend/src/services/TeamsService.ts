@@ -18,7 +18,7 @@ export default class TeamsService implements ITeamsService {
 
   async getTeam(id: string): Promise<ITeamResult> {
     const result = await this._teamsModel.getTeam(id);
-    if (!result) return { status: 400, message: 'team not exist' };
+    if (!result) return { status: 404, message: 'team not found' };
     return { status: 200, result };
   }
 }
