@@ -13,3 +13,7 @@ export interface ITeamsResult {
 export interface ITeamsService {
   getAll(): Promise<ITeamsResult>
 }
+
+export interface ITeamsModel {
+  getAll(): Promise<ITeams>
+}

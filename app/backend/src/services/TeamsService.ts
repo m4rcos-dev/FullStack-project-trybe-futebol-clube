@@ -1,9 +1,14 @@
-import { ITeamsResult, ITeamsService } from '../interfaces/TeamsInterface';
-import { resultTeams } from '../tests/mocks/teams';
+import { ITeamsModel, ITeamsResult, ITeamsService } from '../interfaces/TeamsInterface';
 
 export default class TeamsService implements ITeamsService {
+  private _teamsModel: ITeamsModel;
+
+  constructor(teamsModel: ITeamsModel) {
+    this._teamsModel = teamsModel;
+  }
+
   async getAll(): Promise<ITeamsResult> {
-    const result = resultTeams;
+    const result = await this._teamsModel.getAll();
     return { status: 200, result };
   }
 }
