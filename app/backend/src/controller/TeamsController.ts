@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { resultTeam } from '../tests/mocks/teams';
 import { ITeamsService } from '../interfaces/TeamsInterface';
 
 export default class TeamsController {
@@ -15,6 +14,9 @@ export default class TeamsController {
   }
 
   async getTeam(req: Request, res: Response): Promise<Response | void> {
-    return res.status(200).json(resultTeam);
+    const { id } = req.params;
+    const { status, result, message } = await this._teamsService.getTeam(id);
+    if (message) return res.status(status).json({ message });
+    return res.status(status).json(result);
   }
 }
