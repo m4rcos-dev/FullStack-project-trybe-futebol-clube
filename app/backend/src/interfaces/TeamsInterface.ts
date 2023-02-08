@@ -28,10 +28,10 @@ export interface ITeamsService {
 
 export interface ITeamsModel {
   getAll(): Promise<ITeams>
-  getTeam(id: string): Promise<ITeam>
+  getTeam(id: string): Promise<ITeam | null>
 }
 
 export interface ITeamsRepository {
   getAll(): Promise<ITeams>
-  getTeam(id: string): Promise<ITeam>
+  getTeam(id: string): Promise<ITeam | null>
 }

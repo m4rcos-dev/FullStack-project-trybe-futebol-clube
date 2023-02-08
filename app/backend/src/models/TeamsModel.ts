@@ -12,7 +12,7 @@ export default class TeamsModel implements ITeamsModel {
     return result;
   }
 
-  async getTeam(id: string): Promise<ITeam> {
+  async getTeam(id: string): Promise<ITeam | null> {
     const result = await this._teamsRepository.getTeam(id);
     return result;
   }

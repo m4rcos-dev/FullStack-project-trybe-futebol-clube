@@ -1,4 +1,3 @@
-import { resultTeam } from '../../tests/mocks/teams';
 import Teams from '../../database/models/Teams';
 import { ITeam, ITeams, ITeamsRepository } from '../../interfaces/TeamsInterface';
 
@@ -10,9 +9,8 @@ export default class TeamsSequelizeRepository implements ITeamsRepository {
     return result;
   }
 
-  async getTeam(id: string): Promise<ITeam> {
-    console.log(id);
-    const result = resultTeam;
+  async getTeam(id: string): Promise<ITeam | null> {
+    const result = await this.teamsModel.findOne({ where: { id } });
     return result;
   }
 }
