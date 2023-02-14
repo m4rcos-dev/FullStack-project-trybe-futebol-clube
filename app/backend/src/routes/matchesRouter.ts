@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { resultMatches } from '../tests/mocks/matches';
+import MatchesController from '../controller/MatchesController';
 
 const router = Router();
 
-router.get('/', (req, res) => res.status(200).json(resultMatches));
+const matchesController = new MatchesController();
+
+router.get('/', (req, res) => matchesController.getAll(req, res));
 
 export default router;
