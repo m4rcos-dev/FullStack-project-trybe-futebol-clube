@@ -51,3 +51,4 @@ Teams.hasMany(Matches, { foreignKey: 'awayTeamId', as: 'awayMatches' });
 Matches.belongsTo(Teams, { foreignKey: 'awayTeamId', as: 'awayTeam' });
 
 export default Matches;
+// Requirement 18
