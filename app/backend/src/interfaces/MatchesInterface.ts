@@ -23,3 +23,7 @@ export interface IMatchesResult {
 export interface IMatchesService {
   getAll(): Promise<IMatchesResult>
 }
+
+export interface IMatchesModel {
+  getAll(): Promise<IMatches>
+}

@@ -1,9 +1,14 @@
-import { IMatchesResult, IMatchesService } from '../interfaces/MatchesInterface';
-import { resultMatches } from '../tests/mocks/matches';
+import { IMatchesModel, IMatchesResult, IMatchesService } from '../interfaces/MatchesInterface';
 
 export default class MatchesService implements IMatchesService {
+  private _matchesModel: IMatchesModel;
+
+  constructor(matchesModel: IMatchesModel) {
+    this._matchesModel = matchesModel;
+  }
+
   async getAll(): Promise<IMatchesResult> {
-    const result = resultMatches;
+    const result = await this._matchesModel.getAll();
     return { status: 200, result };
   }
 }
