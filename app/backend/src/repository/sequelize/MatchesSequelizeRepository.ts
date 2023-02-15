@@ -15,3 +15,4 @@ export default class MatchesSequelizeRepository implements IMatchesRepository {
     return result;
   }
 }
+// Requirement 19
