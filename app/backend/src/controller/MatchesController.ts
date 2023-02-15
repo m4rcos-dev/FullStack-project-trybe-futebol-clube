@@ -1,8 +1,15 @@
 import { Request, Response } from 'express';
-import { resultMatches } from '../tests/mocks/matches';
+import { IMatchesService } from '../interfaces/MatchesInterface';
 
 export default class MatchesController {
+  private _matchesService: IMatchesService;
+
+  constructor(matchesService: IMatchesService) {
+    this._matchesService = matchesService;
+  }
+
   async getAll(_req: Request, res: Response): Promise<Response | void> {
-    return res.status(200).json(resultMatches);
+    const { status, result } = await this._matchesService.getAll();
+    return res.status(status).json(result);
   }
 }
