@@ -6,10 +6,10 @@ export interface IMatches {
     awayTeamId: number;
     awayTeamGoals: number;
     inProgress: boolean;
-    homeTeam: {
+    homeTeam?: {
       teamName: string;
     },
-    awayTeam: {
+    awayTeam?: {
       teamName: string;
     }
   }
@@ -25,5 +25,9 @@ export interface IMatchesService {
 }
 
 export interface IMatchesModel {
+  getAll(): Promise<IMatches>
+}
+
+export interface IMatchesRepository {
   getAll(): Promise<IMatches>
 }
