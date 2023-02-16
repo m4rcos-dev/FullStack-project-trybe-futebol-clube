@@ -24,4 +24,10 @@ export default class MatchesModel implements IMatchesModel {
     const result = await this._matchesRepository.update(id);
     return result;
   }
+
+  async updateById(id: string): Promise<boolean> {
+    console.log(id);
+    const result = true;
+    return result;
+  }
 }
