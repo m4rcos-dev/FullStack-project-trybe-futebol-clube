@@ -41,9 +41,15 @@ export interface IMatcheResultCreate {
   inProgress: boolean,
 }
 
+export interface IMatcheResultUpdate {
+  status: number,
+  message: string,
+}
+
 export interface IMatchesService {
   getAll(inProgress: unknown): Promise<IMatchesResult>
   create(body: IBodyCreateMatche): Promise<IMatcheResult>
+  update(id: string): Promise<IMatcheResultUpdate>
 }
 
 export interface IMatchesModel {

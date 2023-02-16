@@ -22,7 +22,7 @@ export default class MatchesController {
 
   async update(req: Request, res: Response): Promise<Response | void> {
     const { id } = req.params;
-    console.log(id);
-    return res.status(200).json({ message: 'Finished' });
+    const { status, message } = await this._matchesService.update(id);
+    return res.status(status).json({ message });
   }
 }
