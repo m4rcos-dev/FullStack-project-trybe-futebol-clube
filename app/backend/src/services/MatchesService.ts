@@ -46,4 +46,9 @@ export default class MatchesService implements IMatchesService {
     if (!result) return { status: 400, message: 'Update Error' };
     return { status: 200, message: 'Finished' };
   }
+
+  async updateById(id: string): Promise<IMatcheResultUpdate> {
+    console.log(id);
+    return { status: 200, message: 'Updated' };
+  }
 }

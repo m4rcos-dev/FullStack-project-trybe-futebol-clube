@@ -51,6 +51,7 @@ export interface IMatchesService {
   getAll(inProgress: unknown): Promise<IMatchesResult>
   create(body: IBodyCreateMatche): Promise<IMatcheResult>
   update(id: string): Promise<IMatcheResultUpdate>
+  updateById(id: string): Promise<IMatcheResultUpdate>
 }
 
 export interface IMatchesModel {
