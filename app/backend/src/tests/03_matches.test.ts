@@ -72,9 +72,11 @@ describe('Testa endpoint /matches', () => {
 
   describe('Testa endpoint /matches/:id', () => {
     it('Retorna um status 200 e json {"message": "Updated"}', async () => {
+      // ACT - agir / executar
       const httpResponse = await chai
         .request(app)
         .patch('/matches/:id')
+      // ASSERT - verificar
       expect(httpResponse.status).to.equal(200);
       expect(httpResponse.body).to.be.deep.equal({ message: "Updated" });
     });
