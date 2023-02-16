@@ -6,6 +6,8 @@ import Matches from '../database/models/Matches'
 
 import { app } from '../app';
 import { bodyCreateMatche, resultCreateMatche, resultMatches } from './mocks/matches';
+import tokenGenerate from '../utils/tokenGenerate';
+import { resultFindOne } from './mocks/login';
 
 chai.use(chaiHttp);
 
@@ -14,6 +16,8 @@ const { expect } = chai;
 describe('Testa endpoint /matches', () => {
   // TRIPLE AA
   // ARRANGE - arranjar / arrumar
+  const token = tokenGenerate(resultFindOne);
+
   beforeEach(async () => {
     sinon
       .stub(Matches, 'findAll')
@@ -49,6 +53,7 @@ describe('Testa endpoint /matches', () => {
       .request(app)
       .post('/matches')
       .send(bodyCreateMatche)
+      .set('Authorization', token)
     // ASSERT - verificar
     expect(httpResponse.status).to.equal(201);
     expect(httpResponse.body).to.be.deep.equal(resultCreateMatche);
