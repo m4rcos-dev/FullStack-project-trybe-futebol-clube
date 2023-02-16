@@ -39,10 +39,12 @@ describe('Testa endpoint /matches', () => {
   });
 
   it('Retorna um status 201 e json contendo o matche cadastrado', async () => {
+    // ACT - agir / executar
     const httpResponse = await chai
       .request(app)
       .post('/matches')
       .send(bodyCreateMatche)
+    // ASSERT - verificar
     expect(httpResponse.status).to.equal(201);
     expect(httpResponse.body).to.be.deep.equal(resultCreateMatche);
   })
