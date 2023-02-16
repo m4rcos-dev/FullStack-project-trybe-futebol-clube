@@ -56,7 +56,7 @@ describe('Testa endpoint /matches', () => {
     // ASSERT - verificar
     expect(httpResponse.status).to.equal(201);
     expect(httpResponse.body).to.be.deep.equal(resultCreateMatche);
-  })
+  });
 
   describe('Testa endpoint /matches/:id/finish', () => {
     it('Retorna um status 200 e json { "message": "Finished" }', async () => {
@@ -67,6 +67,16 @@ describe('Testa endpoint /matches', () => {
       // ASSERT - verificar
       expect(httpResponse.status).to.equal(200);
       expect(httpResponse.body).to.be.deep.equal({ message: "Finished" });
-    })
-  })
+    });
+  });
+
+  describe('Testa endpoint /matches/:id', () => {
+    it('Retorna um status 200 e json {"message": "Updated"}', async () => {
+      const httpResponse = await chai
+        .request(app)
+        .patch('/matches/:id')
+      expect(httpResponse.status).to.equal(200);
+      expect(httpResponse.body).to.be.deep.equal({ message: "Updated" });
+    });
+  });
 })
