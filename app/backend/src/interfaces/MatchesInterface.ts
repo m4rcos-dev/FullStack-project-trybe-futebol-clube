@@ -21,13 +21,13 @@ export interface IMatchesResult {
 }
 
 export interface IMatchesService {
-  getAll(): Promise<IMatchesResult>
+  getAll(inProgress: unknown): Promise<IMatchesResult>
 }
 
 export interface IMatchesModel {
-  getAll(): Promise<IMatches>
+  getAll(inProgress: unknown): Promise<IMatches>
 }
 
 export interface IMatchesRepository {
-  getAll(): Promise<IMatches>
+  getAll(inProgress: unknown): Promise<IMatches>
 }

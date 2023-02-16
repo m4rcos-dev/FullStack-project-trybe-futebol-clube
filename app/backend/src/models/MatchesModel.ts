@@ -7,8 +7,8 @@ export default class MatchesModel implements IMatchesModel {
     this._matchesRepository = matchesRespository;
   }
 
-  async getAll(): Promise<IMatches> {
-    const result = await this._matchesRepository.getAll();
+  async getAll(inProgress: unknown): Promise<IMatches> {
+    const result = await this._matchesRepository.getAll(inProgress);
     return result;
   }
 }

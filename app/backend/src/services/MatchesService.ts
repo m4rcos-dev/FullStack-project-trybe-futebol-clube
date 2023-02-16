@@ -7,8 +7,8 @@ export default class MatchesService implements IMatchesService {
     this._matchesModel = matchesModel;
   }
 
-  async getAll(): Promise<IMatchesResult> {
-    const result = await this._matchesModel.getAll();
+  async getAll(inProgress: unknown): Promise<IMatchesResult> {
+    const result = await this._matchesModel.getAll(inProgress);
     return { status: 200, result };
   }
 }
