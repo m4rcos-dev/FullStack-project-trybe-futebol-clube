@@ -1,6 +1,9 @@
 import Teams from '../../database/models/Teams';
 import Matches from '../../database/models/Matches';
-import { IMatches, IMatchesRepository } from '../../interfaces/MatchesInterface';
+import { IBodyCreateMatche,
+  IMatcheResultCreate,
+  IMatches,
+  IMatchesRepository } from '../../interfaces/MatchesInterface';
 
 export default class MatchesSequelizeRepository implements IMatchesRepository {
   constructor(private matchesModel = Matches) {}
@@ -22,6 +25,23 @@ export default class MatchesSequelizeRepository implements IMatchesRepository {
         { model: Teams, as: 'homeTeam', attributes: { exclude: ['id'] } },
         { model: Teams, as: 'awayTeam', attributes: { exclude: ['id'] } },
       ],
+    });
+    return result;
+  }
+
+  async create(body: IBodyCreateMatche): Promise<IMatcheResultCreate> {
+    const {
+      homeTeamId,
+      homeTeamGoals,
+      awayTeamId,
+      awayTeamGoals,
+    } = body;
+    const result = await this.matchesModel.create({
+      homeTeamId,
+      homeTeamGoals,
+      awayTeamId,
+      awayTeamGoals,
+      inProgress: true,
     });
     return result;
   }

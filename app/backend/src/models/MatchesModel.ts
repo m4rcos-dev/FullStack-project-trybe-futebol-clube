@@ -1,4 +1,3 @@
-import { resultCreateMatche } from '../tests/mocks/matches';
 import { IBodyCreateMatche, IMatcheResultCreate,
   IMatches,
   IMatchesModel,
@@ -17,8 +16,7 @@ export default class MatchesModel implements IMatchesModel {
   }
 
   async create(body: IBodyCreateMatche): Promise<IMatcheResultCreate> {
-    console.log(body);
-    const result = resultCreateMatche;
+    const result = await this._matchesRepository.create(body);
     return result;
   }
 }
