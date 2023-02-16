@@ -24,7 +24,8 @@ export default class MatchesService implements IMatchesService {
   }
 
   async update(id: string): Promise<IMatcheResultUpdate> {
-    console.log(id);
+    const result = await this._matchesModel.update(id);
+    if (!result) return { status: 400, message: 'Update Error' };
     return { status: 200, message: 'Finished' };
   }
 }

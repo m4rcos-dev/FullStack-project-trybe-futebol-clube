@@ -55,6 +55,7 @@ export interface IMatchesService {
 export interface IMatchesModel {
   getAll(inProgress: unknown): Promise<IMatches>
   create(body: IBodyCreateMatche): Promise<IMatcheResultCreate>
+  update(id: string): Promise<boolean>
 }
 
 export interface IMatchesRepository {

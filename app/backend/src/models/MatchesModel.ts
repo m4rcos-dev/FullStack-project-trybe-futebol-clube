@@ -19,4 +19,9 @@ export default class MatchesModel implements IMatchesModel {
     const result = await this._matchesRepository.create(body);
     return result;
   }
+
+  async update(id: string): Promise<boolean> {
+    console.log(id);
+    return false;
+  }
 }
