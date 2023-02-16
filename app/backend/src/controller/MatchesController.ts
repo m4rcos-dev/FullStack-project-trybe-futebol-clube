@@ -29,7 +29,8 @@ export default class MatchesController {
 
   async updateById(req: Request, res: Response): Promise<Response | void> {
     const { id } = req.params;
-    const { status, message } = await this._matchesService.updateById(id);
+    const { body } = req;
+    const { status, message } = await this._matchesService.updateById(id, body);
     return res.status(status).json({ message });
   }
 }

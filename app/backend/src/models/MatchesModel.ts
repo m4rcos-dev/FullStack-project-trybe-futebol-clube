@@ -1,4 +1,4 @@
-import { IBodyCreateMatche, IMatcheResultCreate,
+import { IBodyCreateMatche, IBodyUpdateById, IMatcheResultCreate,
   IMatches,
   IMatchesModel,
   IMatchesRepository } from '../interfaces/MatchesInterface';
@@ -25,9 +25,8 @@ export default class MatchesModel implements IMatchesModel {
     return result;
   }
 
-  async updateById(id: string): Promise<boolean> {
-    console.log(id);
-    const result = true;
+  async updateById(id: string, body: IBodyUpdateById): Promise<boolean> {
+    const result = await this._matchesRepository.updateById(id, body);
     return result;
   }
 }

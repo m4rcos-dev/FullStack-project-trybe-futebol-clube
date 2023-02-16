@@ -47,22 +47,28 @@ export interface IMatcheResultUpdate {
   message: string,
 }
 
+export interface IBodyUpdateById {
+  homeTeamGoals: number,
+  awayTeamGoals: number,
+}
+
 export interface IMatchesService {
   getAll(inProgress: unknown): Promise<IMatchesResult>
   create(body: IBodyCreateMatche): Promise<IMatcheResult>
   update(id: string): Promise<IMatcheResultUpdate>
-  updateById(id: string): Promise<IMatcheResultUpdate>
+  updateById(id: string, body: IBodyUpdateById): Promise<IMatcheResultUpdate>
 }
 
 export interface IMatchesModel {
   getAll(inProgress: unknown): Promise<IMatches>
   create(body: IBodyCreateMatche): Promise<IMatcheResultCreate>
   update(id: string): Promise<boolean>
-  updateById(id: string): Promise<boolean>
+  updateById(id: string, body: IBodyUpdateById): Promise<boolean>
 }
 
 export interface IMatchesRepository {
   getAll(inProgress: unknown): Promise<IMatches>
   create(body: IBodyCreateMatche): Promise<IMatcheResultCreate>
   update(id: string): Promise<boolean>
+  updateById(id: string, body: IBodyUpdateById): Promise<boolean>
 }

@@ -1,6 +1,7 @@
 import { ITeamsService } from '../interfaces/TeamsInterface';
 import {
   IBodyCreateMatche,
+  IBodyUpdateById,
   IMatcheResult,
   IMatcheResultUpdate,
   IMatchesModel,
@@ -47,8 +48,8 @@ export default class MatchesService implements IMatchesService {
     return { status: 200, message: 'Finished' };
   }
 
-  async updateById(id: string): Promise<IMatcheResultUpdate> {
-    const result = await this._matchesModel.updateById(id);
+  async updateById(id: string, body: IBodyUpdateById): Promise<IMatcheResultUpdate> {
+    const result = await this._matchesModel.updateById(id, body);
     if (!result) return { status: 400, message: 'Update Error' };
     return { status: 200, message: 'Updated' };
   }

@@ -1,6 +1,7 @@
 import Teams from '../../database/models/Teams';
 import Matches from '../../database/models/Matches';
 import { IBodyCreateMatche,
+  IBodyUpdateById,
   IMatcheResultCreate,
   IMatches,
   IMatchesRepository } from '../../interfaces/MatchesInterface';
@@ -50,6 +51,15 @@ export default class MatchesSequelizeRepository implements IMatchesRepository {
     const [qtdUpdated] = await this.matchesModel.update({ inProgress: false }, {
       where: { id },
     });
+    return qtdUpdated > 0;
+  }
+
+  async updateById(id: string, body: IBodyUpdateById): Promise<boolean> {
+    const [qtdUpdated] = await this.matchesModel.update(
+      body,
+      { where: { id } },
+    );
+
     return qtdUpdated > 0;
   }
 }
