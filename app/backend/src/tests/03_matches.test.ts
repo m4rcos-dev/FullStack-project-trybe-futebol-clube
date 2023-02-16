@@ -47,7 +47,6 @@ describe('Testa endpoint /matches', () => {
   });
 
   it('Retorna um status 201 e json contendo o matche cadastrado', async () => {
-    // Requirement 22
     // ACT - agir / executar
     const httpResponse = await chai
       .request(app)
@@ -61,9 +60,11 @@ describe('Testa endpoint /matches', () => {
 
   describe('Testa endpoint /matches/:id/finish', () => {
     it('Retorna um status 200 e json { "message": "Finished" }', async () => {
+      // ACT - agir / executar
       const httpResponse = await chai
         .request(app)
         .patch('/matches/:id/finish')
+      // ASSERT - verificar
       expect(httpResponse.status).to.equal(200);
       expect(httpResponse.body).to.be.deep.equal({ message: "Finished" });
     })
