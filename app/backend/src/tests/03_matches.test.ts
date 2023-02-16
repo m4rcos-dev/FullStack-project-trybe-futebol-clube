@@ -21,11 +21,15 @@ describe('Testa endpoint /matches', () => {
     sinon
       .stub(Matches, 'create')
       .resolves(resultCreateMatche as Matches)
+    sinon
+      .stub(Matches, 'update')
+      .resolves()
   });
 
   afterEach(async () => {
     (Matches.findAll as sinon.SinonStub).restore();
     (Matches.create as sinon.SinonStub).restore();
+    (Matches.update as sinon.SinonStub).restore();
   });
 
   it('Retorna status 200 e um json contendo todos matches', async () => {
@@ -48,5 +52,15 @@ describe('Testa endpoint /matches', () => {
     // ASSERT - verificar
     expect(httpResponse.status).to.equal(201);
     expect(httpResponse.body).to.be.deep.equal(resultCreateMatche);
+  })
+
+  describe('Testa endpoint /matches/:id/finish', () => {
+    it('Retorna um status 200 e json { "message": "Finished" }', async () => {
+      const httpResponse = await chai
+        .request(app)
+        .patch('/matches/:id/finish')
+      expect(httpResponse.status).to.equal(200);
+      expect(httpResponse.body).to.be.deep.equal({ message: "Finished" });
+    })
   })
 })
