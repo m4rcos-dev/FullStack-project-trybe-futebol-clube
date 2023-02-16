@@ -53,4 +53,4 @@ export default class MatchesSequelizeRepository implements IMatchesRepository {
     return qtdUpdated > 0;
   }
 }
-// Requirement 19
+// Requirement 19 and
