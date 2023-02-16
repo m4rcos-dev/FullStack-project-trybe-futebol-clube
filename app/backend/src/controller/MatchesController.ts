@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { resultCreateMatche } from '../tests/mocks/matches';
 import { IMatchesService } from '../interfaces/MatchesInterface';
 
 export default class MatchesController {
@@ -12,5 +13,9 @@ export default class MatchesController {
     const { inProgress } = req.query;
     const { status, result } = await this._matchesService.getAll(inProgress);
     return res.status(status).json(result);
+  }
+
+  async create(req: Request, res: Response): Promise<Response | void> {
+    return res.status(201).json(resultCreateMatche);
   }
 }
