@@ -22,7 +22,8 @@ export interface IMatchesResult {
 
 export interface IMatcheResult {
   status: number,
-  result: IMatcheResultCreate,
+  result?: IMatcheResultCreate,
+  message?: string,
 }
 
 export interface IBodyCreateMatche {

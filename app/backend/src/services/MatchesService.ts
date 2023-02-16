@@ -20,6 +20,12 @@ export default class MatchesService implements IMatchesService {
 
   async create(body: IBodyCreateMatche): Promise<IMatcheResult> {
     const result = await this._matchesModel.create(body);
+    const { homeTeamId, awayTeamId } = body;
+    if (homeTeamId === awayTeamId) {
+      return {
+        status: 422,
+        message: 'It is not possible to create a match with two equal teams' };
+    }
     return { status: 201, result };
   }
 
