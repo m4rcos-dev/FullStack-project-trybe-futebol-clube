@@ -20,6 +20,11 @@ export interface IMatchesResult {
   result: IMatches,
 }
 
+export interface IMatcheResult {
+  status: number,
+  result: IMatcheResultCreate,
+}
+
 export interface IBodyCreateMatche {
   homeTeamId: number,
   awayTeamId: number,
@@ -38,11 +43,12 @@ export interface IMatcheResultCreate {
 
 export interface IMatchesService {
   getAll(inProgress: unknown): Promise<IMatchesResult>
-  create(body: IBodyCreateMatche): Promise<IMatchesResult>
+  create(body: IBodyCreateMatche): Promise<IMatcheResult>
 }
 
 export interface IMatchesModel {
   getAll(inProgress: unknown): Promise<IMatches>
+  create(body: IBodyCreateMatche): Promise<IMatcheResultCreate>
 }
 
 export interface IMatchesRepository {

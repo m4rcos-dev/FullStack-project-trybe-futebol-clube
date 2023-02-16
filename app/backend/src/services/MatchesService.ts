@@ -1,6 +1,6 @@
-import { resultCreateMatche } from '../tests/mocks/matches';
 import {
   IBodyCreateMatche,
+  IMatcheResult,
   IMatchesModel,
   IMatchesResult,
   IMatchesService } from '../interfaces/MatchesInterface';
@@ -17,9 +17,8 @@ export default class MatchesService implements IMatchesService {
     return { status: 200, result };
   }
 
-  async create(body: IBodyCreateMatche): Promise<IMatchesResult> {
-    console.log(body);
-    const result = resultCreateMatche;
+  async create(body: IBodyCreateMatche): Promise<IMatcheResult> {
+    const result = await this._matchesModel.create(body);
     return { status: 201, result };
   }
 }
