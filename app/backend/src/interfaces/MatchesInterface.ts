@@ -61,4 +61,5 @@ export interface IMatchesModel {
 export interface IMatchesRepository {
   getAll(inProgress: unknown): Promise<IMatches>
   create(body: IBodyCreateMatche): Promise<IMatcheResultCreate>
+  update(id: string): Promise<boolean>
 }

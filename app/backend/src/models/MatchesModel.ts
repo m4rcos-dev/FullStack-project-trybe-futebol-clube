@@ -21,7 +21,7 @@ export default class MatchesModel implements IMatchesModel {
   }
 
   async update(id: string): Promise<boolean> {
-    console.log(id);
-    return false;
+    const result = await this._matchesRepository.update(id);
+    return result;
   }
 }

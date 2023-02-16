@@ -27,7 +27,7 @@ describe('Testa endpoint /matches', () => {
       .resolves(resultCreateMatche as Matches)
     sinon
       .stub(Matches, 'update')
-      .resolves()
+      .resolves([1])
   });
 
   afterEach(async () => {

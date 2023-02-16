@@ -45,5 +45,12 @@ export default class MatchesSequelizeRepository implements IMatchesRepository {
     });
     return result;
   }
+
+  async update(id: string): Promise<boolean> {
+    const [qtdUpdated] = await this.matchesModel.update({ inProgress: false }, {
+      where: { id },
+    });
+    return qtdUpdated > 0;
+  }
 }
 // Requirement 19
