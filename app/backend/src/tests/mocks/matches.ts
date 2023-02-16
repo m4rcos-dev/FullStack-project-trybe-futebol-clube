@@ -29,4 +29,20 @@ const resultMatches = [
   }
 ];
 
-export { resultMatches }
+const bodyCreateMatche = {
+  "homeTeamId": 16, // O valor deve ser o id do time
+  "awayTeamId": 8, // O valor deve ser o id do time
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+}
+
+const resultCreateMatche = {
+  "id": 1,
+  "homeTeamId": 16,
+  "homeTeamGoals": 2,
+  "awayTeamId": 8,
+  "awayTeamGoals": 2,
+  "inProgress": true,
+}
+
+export { resultMatches, resultCreateMatche, bodyCreateMatche }
