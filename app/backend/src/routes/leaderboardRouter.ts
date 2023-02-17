@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { resultLeaderboards } from '../tests/mocks/leaderboards';
+import LeaderboardController from '../controller/LeaderboardController';
 
 const router = Router();
 
-router.get('/home', (req, res) => res.status(200).json(resultLeaderboards));
+const leaderboardController = new LeaderboardController();
+
+router.get('/home', (req, res) => leaderboardController.getAllHomeTeam(req, res));
 
 export default router;
