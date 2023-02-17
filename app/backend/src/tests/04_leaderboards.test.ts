@@ -31,7 +31,7 @@ describe('Testa enpoint /leaderboards/home', () => {
   it('Retorna status 200 e um json contendo as leaderboards', async () => {
     const httpResponse = await chai
       .request(app)
-      .get('/leaderboards/home')
+      .get('/leaderboard/home')
     expect(httpResponse.status).to.equal(200);
     expect(httpResponse.status).to.be.deep.equal(resultLeaderboards);
   });
