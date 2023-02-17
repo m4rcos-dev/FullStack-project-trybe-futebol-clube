@@ -1,9 +1,16 @@
-import { resultLeaderboards } from '../tests/mocks/leaderboards';
-import { ILeaderboardService, ILeaderboardServiceResult } from '../interfaces/LeaderboardInterface';
+import { ILeaderboardModel,
+  ILeaderboardService,
+  ILeaderboardServiceResult } from '../interfaces/LeaderboardInterface';
 
 export default class LeaderboardService implements ILeaderboardService {
+  private _leaderboardModel: ILeaderboardModel;
+
+  constructor(leaderboardModel: ILeaderboardModel) {
+    this._leaderboardModel = leaderboardModel;
+  }
+
   async getAllHomeTeams(): Promise<ILeaderboardServiceResult> {
-    const result = resultLeaderboards;
+    const result = await this._leaderboardModel.getAllHomeTeams();
     return { status: 200, result };
   }
 }
