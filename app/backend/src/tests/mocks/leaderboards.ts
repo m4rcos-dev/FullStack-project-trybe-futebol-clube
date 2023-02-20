@@ -121,7 +121,7 @@ const resultLeaderboards = [
   },
 ]
 
-const resultLeaderboardsBd = [
+const resultLeaderboardsBdHome = [
   {
     "id": 1,
     "homeTeamId": 16,
@@ -234,4 +234,4 @@ const resultLeaderboardsBd = [
   },
 ]
 
-export { resultLeaderboards, resultLeaderboardsBd };
+export { resultLeaderboards, resultLeaderboardsBdHome };
