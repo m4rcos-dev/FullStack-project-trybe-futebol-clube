@@ -17,7 +17,7 @@ export default class LeaderboardService implements ILeaderboardService {
   }
 
   async getAllAwayTeams(): Promise<ILeaderboardServiceResult> {
-    const result = this._leaderboardModel.getAllAwayTeams();
+    const result = await this._leaderboardModel.getAllAwayTeams();
     return { status: 200, result };
   }
 }

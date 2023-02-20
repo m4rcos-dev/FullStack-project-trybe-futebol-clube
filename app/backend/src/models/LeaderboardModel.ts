@@ -1,7 +1,6 @@
 import { ILeaderboardModel,
   ILeaderboardRepository,
   IMatchesHomeTeams } from '../interfaces/LeaderboardInterface';
-import { resultLeaderboards } from '../tests/mocks/leaderboards';
 
 export default class LeaderboardModel implements ILeaderboardModel {
   private _leaderboardRespository: ILeaderboardRepository;
@@ -16,7 +15,7 @@ export default class LeaderboardModel implements ILeaderboardModel {
   }
 
   async getAllAwayTeams(): Promise<IMatchesHomeTeams> {
-    const result = resultLeaderboards;
+    const result = await this._leaderboardRespository.getAllAwayTeams();
     return result;
   }
 }

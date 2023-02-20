@@ -44,7 +44,7 @@ export interface ILeaderboardHomeTeams {
 
 export interface ILeaderboardServiceResult {
   status: number,
-  result: ILeaderboardHomeTeams[],
+  result: ILeaderboardHomeTeams[] | IMatchesHomeTeams,
 }
 
 export interface ILeaderboardService {
@@ -59,4 +59,5 @@ export interface ILeaderboardModel {
 
 export interface ILeaderboardRepository {
   getAllHomeTeams(): Promise<IMatchesHomeTeams>
+  getAllAwayTeams(): Promise<IMatchesHomeTeams>
 }

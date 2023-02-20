@@ -14,4 +14,14 @@ export default class LeaderboardSequelizeRepository implements ILeaderboardRepos
     });
     return result;
   }
+
+  async getAllAwayTeams(): Promise<IMatchesHomeTeams> {
+    const result = await this.matchesModel.findAll({
+      where: { inProgress: false },
+      include: [
+        { model: Teams, as: 'awayTeam', attributes: { exclude: ['id'] } },
+      ],
+    });
+    return result;
+  }
 }
