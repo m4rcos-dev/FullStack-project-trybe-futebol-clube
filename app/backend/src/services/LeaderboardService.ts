@@ -1,4 +1,5 @@
 import leaderboardHomeGenerate from '../utils/leaderboardHomeGenerate';
+import leaderboardAwayGenerate from '../utils/leaderboardAwayGenerate';
 import { ILeaderboardModel,
   ILeaderboardService,
   ILeaderboardServiceResult } from '../interfaces/LeaderboardInterface';
@@ -18,6 +19,7 @@ export default class LeaderboardService implements ILeaderboardService {
 
   async getAllAwayTeams(): Promise<ILeaderboardServiceResult> {
     const result = await this._leaderboardModel.getAllAwayTeams();
-    return { status: 200, result };
+    const currentLeaderboard = leaderboardAwayGenerate(result);
+    return { status: 200, result: currentLeaderboard };
   }
 }

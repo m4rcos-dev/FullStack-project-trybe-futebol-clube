@@ -1,7 +1,7 @@
-import { ILeaderboardTeams, IMatchesHomeTeams } from '../interfaces/LeaderboardInterface';
+import { ILeaderboardTeams, IMatchesAwayTeams } from '../interfaces/LeaderboardInterface';
 
-const arrayUniqueTeams = (teams: IMatchesHomeTeams) => {
-  const arrayAllTeams = Object.values(teams).map((match) => match.homeTeam?.teamName);
+const arrayUniqueTeams = (teams: IMatchesAwayTeams) => {
+  const arrayAllTeams = Object.values(teams).map((match) => match.awayTeam?.teamName);
   const uniqueTeams = arrayAllTeams.filter((team, index, self) =>
     index === self.findIndex((t) => (
       t === team
@@ -9,92 +9,92 @@ const arrayUniqueTeams = (teams: IMatchesHomeTeams) => {
   return uniqueTeams;
 };
 
-const totalGames = (teams: IMatchesHomeTeams) => {
+const totalGames = (teams: IMatchesAwayTeams) => {
   const arrayAllTotalGames = [];
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {
     let currentTeam = 0;
     for (let i2 = 0; i2 < teams.length; i2 += 1) {
-      if (arrayUniqueTeams(teams)[i] === teams[i2].homeTeam?.teamName) currentTeam += 1;
+      if (arrayUniqueTeams(teams)[i] === teams[i2].awayTeam?.teamName) currentTeam += 1;
     }
     arrayAllTotalGames.push(currentTeam);
   }
   return arrayAllTotalGames;
 };
 
-const totalPoints = (teams: IMatchesHomeTeams) => {
+const totalPoints = (teams: IMatchesAwayTeams) => {
   const arrayAllTotalPoints = [];
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {
     let currentTeam = 0;
     for (let i2 = 0; i2 < teams.length; i2 += 1) {
-      if (arrayUniqueTeams(teams)[i] === teams[i2].homeTeam?.teamName
-      && teams[i2].homeTeamGoals > teams[i2].awayTeamGoals) currentTeam += 3;
-      if (arrayUniqueTeams(teams)[i] === teams[i2].homeTeam?.teamName
-      && teams[i2].homeTeamGoals === teams[i2].awayTeamGoals) currentTeam += 1;
+      if (arrayUniqueTeams(teams)[i] === teams[i2].awayTeam?.teamName
+      && teams[i2].awayTeamGoals > teams[i2].homeTeamGoals) currentTeam += 3;
+      if (arrayUniqueTeams(teams)[i] === teams[i2].awayTeam?.teamName
+      && teams[i2].awayTeamGoals === teams[i2].homeTeamGoals) currentTeam += 1;
     }
     arrayAllTotalPoints.push(currentTeam);
   }
   return arrayAllTotalPoints;
 };
 
-const totalVictories = (teams: IMatchesHomeTeams) => {
+const totalVictories = (teams: IMatchesAwayTeams) => {
   const arrayAllTotalVictories = [];
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {
     let currentTeam = 0;
     for (let i2 = 0; i2 < teams.length; i2 += 1) {
-      if (arrayUniqueTeams(teams)[i] === teams[i2].homeTeam?.teamName
-      && teams[i2].homeTeamGoals > teams[i2].awayTeamGoals) currentTeam += 1;
+      if (arrayUniqueTeams(teams)[i] === teams[i2].awayTeam?.teamName
+      && teams[i2].awayTeamGoals > teams[i2].homeTeamGoals) currentTeam += 1;
     }
     arrayAllTotalVictories.push(currentTeam);
   }
   return arrayAllTotalVictories;
 };
 
-const totalDraws = (teams: IMatchesHomeTeams) => {
+const totalDraws = (teams: IMatchesAwayTeams) => {
   const arrayAllTotalDraws = [];
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {
     let currentTeam = 0;
     for (let i2 = 0; i2 < teams.length; i2 += 1) {
-      if (arrayUniqueTeams(teams)[i] === teams[i2].homeTeam?.teamName
-      && teams[i2].homeTeamGoals === teams[i2].awayTeamGoals) currentTeam += 1;
+      if (arrayUniqueTeams(teams)[i] === teams[i2].awayTeam?.teamName
+      && teams[i2].awayTeamGoals === teams[i2].homeTeamGoals) currentTeam += 1;
     }
     arrayAllTotalDraws.push(currentTeam);
   }
   return arrayAllTotalDraws;
 };
 
-const totalLosses = (teams: IMatchesHomeTeams) => {
+const totalLosses = (teams: IMatchesAwayTeams) => {
   const arrayAllTotalLosses = [];
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {
     let currentTeam = 0;
     for (let i2 = 0; i2 < teams.length; i2 += 1) {
-      if (arrayUniqueTeams(teams)[i] === teams[i2].homeTeam?.teamName
-      && teams[i2].homeTeamGoals < teams[i2].awayTeamGoals) currentTeam += 1;
+      if (arrayUniqueTeams(teams)[i] === teams[i2].awayTeam?.teamName
+      && teams[i2].awayTeamGoals < teams[i2].homeTeamGoals) currentTeam += 1;
     }
     arrayAllTotalLosses.push(currentTeam);
   }
   return arrayAllTotalLosses;
 };
 
-const goalsFavor = (teams: IMatchesHomeTeams) => {
+const goalsFavor = (teams: IMatchesAwayTeams) => {
   const arrayAllTotalFavor = [];
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {
     let currentTeam = 0;
     for (let i2 = 0; i2 < teams.length; i2 += 1) {
       if (arrayUniqueTeams(teams)[i] === teams[i2]
-        .homeTeam?.teamName) currentTeam += teams[i2].homeTeamGoals;
+        .awayTeam?.teamName) currentTeam += teams[i2].awayTeamGoals;
     }
     arrayAllTotalFavor.push(currentTeam);
   }
   return arrayAllTotalFavor;
 };
 
-const goalsOwn = (teams: IMatchesHomeTeams) => {
+const goalsOwn = (teams: IMatchesAwayTeams) => {
   const arrayAllTotalOwn = [];
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {
     let currentTeam = 0;
     for (let i2 = 0; i2 < teams.length; i2 += 1) {
       if (arrayUniqueTeams(teams)[i] === teams[i2]
-        .homeTeam?.teamName) currentTeam += teams[i2].awayTeamGoals;
+        .awayTeam?.teamName) currentTeam += teams[i2].homeTeamGoals;
     }
     arrayAllTotalOwn.push(currentTeam);
   }
@@ -113,7 +113,7 @@ const sortResult = (result: ILeaderboardTeams) => {
   return resultSorted;
 };
 
-export default function leaderboardHomeGenerate(teams: IMatchesHomeTeams): ILeaderboardTeams[] {
+export default function leaderboardHomeGenerate(teams: IMatchesAwayTeams): ILeaderboardTeams[] {
   const result = [];
 
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {

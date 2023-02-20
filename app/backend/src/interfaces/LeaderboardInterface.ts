@@ -13,6 +13,21 @@ export interface IMatchesHomeTeams {
   length: number;
 }
 
+export interface IMatchesAwayTeams {
+  [index: number]: {
+    id: number,
+    homeTeamId: number,
+    homeTeamGoals: number,
+    awayTeamId: number,
+    awayTeamGoals: number,
+    inProgress: boolean,
+    awayTeam?: {
+      teamName: string,
+    },
+  }
+  length: number;
+}
+
 export interface IMatcheHomeTeam {
   [index: number]: {
     id: number;
@@ -27,7 +42,21 @@ export interface IMatcheHomeTeam {
   }
 }
 
-export interface ILeaderboardHomeTeams {
+export interface IMatcheAwayTeam {
+  [index: number]: {
+    id: number;
+    homeTeamId: number;
+    homeTeamGoals: number;
+    awayTeamId: number;
+    awayTeamGoals: number;
+    inProgress: boolean;
+    awayTeam: {
+      teamName: string;
+    },
+  }
+}
+
+export interface ILeaderboardTeams {
   [index: number]: {
     name: string;
     totalPoints: number;
@@ -44,7 +73,7 @@ export interface ILeaderboardHomeTeams {
 
 export interface ILeaderboardServiceResult {
   status: number,
-  result: ILeaderboardHomeTeams[] | IMatchesHomeTeams,
+  result: ILeaderboardTeams[] | IMatchesHomeTeams,
 }
 
 export interface ILeaderboardService {

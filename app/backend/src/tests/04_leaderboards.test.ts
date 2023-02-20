@@ -6,7 +6,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import Matches from '../database/models/Matches';
-import { resultLeaderboardsBd as resultLeaderboardsBdHome } from './mocks/leaderboards';
+import { resultLeaderboardsBdHome, resultLeaderboardsBdAway } from './mocks/leaderboards';
 import leaderboardHomeGenerate from '../utils/leaderboardHomeGenerate';
 
 
