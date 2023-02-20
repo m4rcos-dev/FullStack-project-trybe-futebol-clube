@@ -79,6 +79,7 @@ export interface ILeaderboardServiceResult {
 export interface ILeaderboardService {
   getAllHomeTeams(): Promise<ILeaderboardServiceResult>
   getAllAwayTeams(): Promise<ILeaderboardServiceResult>
+  getAllTeams(): Promise<ILeaderboardServiceResult>
 }
 
 export interface ILeaderboardModel {
