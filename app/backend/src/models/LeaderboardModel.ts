@@ -1,6 +1,8 @@
 import { ILeaderboardModel,
   ILeaderboardRepository,
-  IMatchesHomeTeams } from '../interfaces/LeaderboardInterface';
+  IMatchesTeam,
+  IMatchesHomeTeams,
+  IMatchesAwayTeams } from '../interfaces/LeaderboardInterface';
 
 export default class LeaderboardModel implements ILeaderboardModel {
   private _leaderboardRespository: ILeaderboardRepository;
@@ -14,8 +16,13 @@ export default class LeaderboardModel implements ILeaderboardModel {
     return result;
   }
 
-  async getAllAwayTeams(): Promise<IMatchesHomeTeams> {
+  async getAllAwayTeams(): Promise<IMatchesAwayTeams> {
     const result = await this._leaderboardRespository.getAllAwayTeams();
+    return result;
+  }
+
+  async getAllTeams(): Promise<IMatchesTeam> {
+    const result = await this._leaderboardRespository.getAllTeams();
     return result;
   }
 }

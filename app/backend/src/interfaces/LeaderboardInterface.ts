@@ -28,7 +28,7 @@ export interface IMatchesAwayTeams {
   length: number;
 }
 
-export interface IMatcheHomeTeam {
+export interface IMatchesTeam {
   [index: number]: {
     id: number;
     homeTeamId: number;
@@ -36,25 +36,42 @@ export interface IMatcheHomeTeam {
     awayTeamId: number;
     awayTeamGoals: number;
     inProgress: boolean;
-    homeTeam: {
+    homeTeam?: {
       teamName: string;
+    },
+    awayTeam?: {
+      teamName: string,
     },
   }
 }
 
-export interface IMatcheAwayTeam {
-  [index: number]: {
-    id: number;
-    homeTeamId: number;
-    homeTeamGoals: number;
-    awayTeamId: number;
-    awayTeamGoals: number;
-    inProgress: boolean;
-    awayTeam: {
-      teamName: string;
-    },
-  }
-}
+// export interface IMatcheHomeTeam {
+//   [index: number]: {
+//     id: number;
+//     homeTeamId: number;
+//     homeTeamGoals: number;
+//     awayTeamId: number;
+//     awayTeamGoals: number;
+//     inProgress: boolean;
+//     homeTeam: {
+//       teamName: string;
+//     },
+//   }
+// }
+
+// export interface IMatcheAwayTeam {
+//   [index: number]: {
+//     id: number;
+//     homeTeamId: number;
+//     homeTeamGoals: number;
+//     awayTeamId: number;
+//     awayTeamGoals: number;
+//     inProgress: boolean;
+//     awayTeam: {
+//       teamName: string;
+//     },
+//   }
+// }
 
 export interface ILeaderboardTeams {
   [index: number]: {
@@ -73,7 +90,7 @@ export interface ILeaderboardTeams {
 
 export interface ILeaderboardServiceResult {
   status: number,
-  result: ILeaderboardTeams[] | IMatchesHomeTeams,
+  result: ILeaderboardTeams[] | IMatchesHomeTeams | IMatchesTeam | IMatchesAwayTeams,
 }
 
 export interface ILeaderboardService {
@@ -84,10 +101,12 @@ export interface ILeaderboardService {
 
 export interface ILeaderboardModel {
   getAllHomeTeams(): Promise<IMatchesHomeTeams>
-  getAllAwayTeams(): Promise<IMatchesHomeTeams>
+  getAllAwayTeams(): Promise<IMatchesAwayTeams>
+  getAllTeams(): Promise<IMatchesTeam>
 }
 
 export interface ILeaderboardRepository {
   getAllHomeTeams(): Promise<IMatchesHomeTeams>
-  getAllAwayTeams(): Promise<IMatchesHomeTeams>
+  getAllAwayTeams(): Promise<IMatchesAwayTeams>
+  getAllTeams(): Promise<IMatchesTeam>
 }

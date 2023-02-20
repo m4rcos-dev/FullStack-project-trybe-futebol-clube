@@ -3,7 +3,6 @@ import leaderboardAwayGenerate from '../utils/leaderboardAwayGenerate';
 import { ILeaderboardModel,
   ILeaderboardService,
   ILeaderboardServiceResult } from '../interfaces/LeaderboardInterface';
-import { resultLeaderboards } from '../tests/mocks/leaderboards';
 
 export default class LeaderboardService implements ILeaderboardService {
   private _leaderboardModel: ILeaderboardModel;
@@ -25,7 +24,7 @@ export default class LeaderboardService implements ILeaderboardService {
   }
 
   async getAllTeams(): Promise<ILeaderboardServiceResult> {
-    const result = resultLeaderboards;
+    const result = await this._leaderboardModel.getAllTeams();
     return { status: 200, result };
   }
 }
