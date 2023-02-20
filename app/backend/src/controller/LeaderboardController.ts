@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { resultLeaderboards } from '../tests/mocks/leaderboards';
 import { ILeaderboardService } from '../interfaces/LeaderboardInterface';
 
 export default class LeaderboardController {
@@ -16,5 +17,9 @@ export default class LeaderboardController {
   async getAllAwayTeams(_req: Request, res: Response): Promise<Response | void > {
     const { status, result } = await this._leaderboardService.getAllAwayTeams();
     return res.status(status).json(result);
+  }
+
+  async getAllTeams(_req: Request, res: Response): Promise<Response | void > {
+    return res.status(200).json(resultLeaderboards);
   }
 }
