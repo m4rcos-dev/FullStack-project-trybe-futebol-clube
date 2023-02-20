@@ -43,6 +43,7 @@ export interface IMatchesTeam {
       teamName: string,
     },
   }
+  length: number;
 }
 
 // export interface IMatcheHomeTeam {
