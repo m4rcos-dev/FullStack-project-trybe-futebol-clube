@@ -14,7 +14,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Testa enpoint /leaderboards/away', () => {
+describe('Testa enpoint /leaderboard/away', () => {
   // TRIPLE AA
   // ARRANGE
   beforeEach(async () => {
