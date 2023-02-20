@@ -6,8 +6,8 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import Matches from '../database/models/Matches';
-import { resultLeaderboards } from './mocks/leaderboards';
-import { resultMatches } from './mocks/matches';
+import { resultLeaderboardsBd } from './mocks/leaderboards';
+import leaderboardHomeGenerate from '../utils/leaderboardHomeGenerate';
 
 
 chai.use(chaiHttp);
@@ -17,22 +17,23 @@ const { expect } = chai;
 describe('Testa enpoint /leaderboards/home', () => {
   // TRIPLE AA
   // ARRANGE
-
   beforeEach(async () => {
     sinon
       .stub(Matches, 'findAll')
-      .resolves(resultMatches as unknown as Matches[])
+      .resolves(resultLeaderboardsBd as unknown as Matches[])
   });
 
   afterEach(async () => {
     (Matches.findAll as sinon.SinonStub).restore();
   });
 
+  const resultSortedLeaderboard = leaderboardHomeGenerate(resultLeaderboardsBd)
+
   it('Retorna status 200 e um json contendo as leaderboards', async () => {
     const httpResponse = await chai
       .request(app)
       .get('/leaderboard/home')
     expect(httpResponse.status).to.equal(200);
-    expect(httpResponse.status).to.be.deep.equal(resultLeaderboards);
+    expect(httpResponse.body).to.be.deep.equal(resultSortedLeaderboard);
   });
 });
