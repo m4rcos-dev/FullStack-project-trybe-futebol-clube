@@ -39,3 +39,4 @@ describe('Testa enpoint /leaderboards/away', () => {
     expect(httpResponse.body).to.be.deep.equal(resultSortedAway);
   });
 });
+// Requeriments 31 and 32
