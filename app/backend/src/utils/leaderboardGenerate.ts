@@ -2,7 +2,9 @@ import { ILeaderboardTeams, IMatchesTeam } from '../interfaces/LeaderboardInterf
 import sortLeaderboard from './sortLeaderboard';
 
 const arrayUniqueTeams = (teams: IMatchesTeam) => {
-  const arrayAllTeams = Object.values(teams).map((match) => match.homeTeam?.teamName);
+  const arrayHomeTeams = Object.values(teams).map((match) => match.homeTeam?.teamName);
+  const arrayAwayTeams = Object.values(teams).map((match) => match.awayTeam?.teamName);
+  const arrayAllTeams = [...arrayHomeTeams, ...arrayAwayTeams];
   const uniqueTeams = arrayAllTeams.filter((team, index, self) =>
     index === self.findIndex((t) => (
       t === team
@@ -10,7 +12,7 @@ const arrayUniqueTeams = (teams: IMatchesTeam) => {
   return uniqueTeams;
 };
 
-const calc1Leaderboard = (teams: IMatchesTeam) => {
+const calc1Leaderboard = (teams: IMatchesTeam, c: string) => {
   const result = {
     totalPoints: 0,
     totalVictories: 0,
@@ -18,37 +20,40 @@ const calc1Leaderboard = (teams: IMatchesTeam) => {
     totalLosses: 0,
     efficiency: 0,
   };
-  Object.values(teams).forEach((team) => {
-    if (team.homeTeamGoals > team.awayTeamGoals) result.totalVictories += 1;
-    if (team.homeTeamGoals === team.awayTeamGoals) result.totalDraws += 1;
-    if (team.homeTeamGoals < team.awayTeamGoals) result.totalLosses += 1;
-    if (team.awayTeamGoals > team.homeTeamGoals) result.totalVictories += 1;
-    if (team.awayTeamGoals === team.homeTeamGoals) result.totalDraws += 1;
-    if (team.awayTeamGoals < team.homeTeamGoals) result.totalLosses += 1;
+  // eslint-disable-next-line complexity
+  Object.values(teams).forEach((t) => {
+    if (c === t.homeTeam?.teamName && t.homeTeamGoals > t.awayTeamGoals) result.totalVictories += 1;
+    if (c === t.homeTeam?.teamName && t.homeTeamGoals === t.awayTeamGoals) result.totalDraws += 1;
+    if (c === t.homeTeam?.teamName && t.homeTeamGoals < t.awayTeamGoals) result.totalLosses += 1;
+    if (c === t.awayTeam?.teamName && t.awayTeamGoals > t.homeTeamGoals) result.totalVictories += 1;
+    if (c === t.awayTeam?.teamName && t.awayTeamGoals === t.homeTeamGoals) result.totalDraws += 1;
+    if (c === t.awayTeam?.teamName && t.awayTeamGoals < t.homeTeamGoals) result.totalLosses += 1;
     result.totalPoints = (result.totalVictories * 3) + result.totalDraws;
     result.efficiency = Number(((result.totalPoints / (teams.length * 3)) * 100).toFixed(2));
   });
   return result;
 };
 
-const calc2Leaderboard = (teams: IMatchesTeam) => {
+const calc2Leaderboard = (teams: IMatchesTeam, c: string) => {
   const result = {
     goalsFavor: 0,
     goalsOwn: 0,
     goalsBalance: 0,
   };
-  Object.values(teams).forEach((team) => {
-    if (team.homeTeamGoals > team.awayTeamGoals) result.goalsFavor += team.homeTeamGoals;
-    if (team.awayTeamGoals > team.homeTeamGoals) result.goalsOwn += team.awayTeamGoals;
+  Object.values(teams).forEach((t) => {
+    if (c === t.homeTeam?.teamName) result.goalsFavor += t.homeTeamGoals;
+    if (c === t.awayTeam?.teamName) result.goalsFavor += t.awayTeamGoals;
+    if (c === t.homeTeam?.teamName) result.goalsOwn += t.awayTeamGoals;
+    if (c === t.awayTeam?.teamName) result.goalsOwn += t.homeTeamGoals;
     result.goalsBalance = result.goalsFavor - result.goalsOwn;
   });
   return result;
 };
 
-const createLeaderboard = (teams: IMatchesTeam) => {
+const createLeaderboard = (teams: IMatchesTeam, c: string) => {
   const { totalPoints, totalVictories,
-    totalDraws, totalLosses, efficiency } = calc1Leaderboard(teams);
-  const { goalsFavor, goalsOwn, goalsBalance } = calc2Leaderboard(teams);
+    totalDraws, totalLosses, efficiency } = calc1Leaderboard(teams, c);
+  const { goalsFavor, goalsOwn, goalsBalance } = calc2Leaderboard(teams, c);
   return {
     totalPoints,
     totalGames: teams.length,
@@ -71,7 +76,7 @@ const leaderboardGenerate = (teams: IMatchesTeam) => {
       || teamFilter.awayTeam?.teamName === team);
     currentTeam = {
       name: team,
-      ...createLeaderboard(filterTeam),
+      ...createLeaderboard(filterTeam, team as string),
     };
     result.push(currentTeam);
   });
