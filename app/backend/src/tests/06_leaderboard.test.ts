@@ -39,3 +39,5 @@ describe('Testa enpoint /leaderboard', () => {
     expect(httpResponse.body).to.be.deep.equal(resultSortedLeaderbord);
   });
 });
+
+// Requirements 33, 34 and 35
