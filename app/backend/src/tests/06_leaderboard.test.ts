@@ -6,7 +6,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import Matches from '../database/models/Matches';
-import leaderboardGenerate from '../utils/leaderboardGenerate';
+import leaderboardAllGenerate from '../utils/leaderboardAllGenerate';
 import { resultLeaderboarsBd } from './mocks/leaderboards';
 
 
@@ -27,7 +27,7 @@ describe('Testa enpoint /leaderboard', () => {
     (Matches.findAll as sinon.SinonStub).restore();
   });
 
-  const resultSortedLeaderbord = leaderboardGenerate(resultLeaderboarsBd);
+  const resultSortedLeaderbord = leaderboardAllGenerate(resultLeaderboarsBd);
 
   it('Retorna status 200 e um json contendo as leaderboards away', async () => {
     // ACT - agir / executar
