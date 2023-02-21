@@ -1,4 +1,5 @@
 import { ILeaderboardTeams, IMatchesAwayTeams } from '../interfaces/LeaderboardInterface';
+import sortLeaderboard from './sortLeaderboard';
 
 const arrayUniqueTeams = (teams: IMatchesAwayTeams) => {
   const arrayAllTeams = Object.values(teams).map((match) => match.awayTeam?.teamName);
@@ -101,19 +102,7 @@ const goalsOwn = (teams: IMatchesAwayTeams) => {
   return arrayAllTotalOwn;
 };
 
-const sortResult = (result: ILeaderboardTeams) => {
-  const resultSorted = Object.values(result).sort((a, b) => {
-    if (a.totalPoints !== b.totalPoints) return b.totalPoints - a.totalPoints;
-    if (a.totalVictories !== b.totalVictories) return b.totalVictories - a.totalVictories;
-    if (a.goalsBalance !== b.goalsBalance) return b.goalsBalance - a.goalsBalance;
-    if (a.goalsFavor !== b.goalsFavor) return b.goalsFavor - a.goalsFavor;
-    if (a.goalsOwn !== b.goalsOwn) return a.goalsOwn - b.goalsOwn;
-    return 0;
-  });
-  return resultSorted;
-};
-
-export default function leaderboardHomeGenerate(teams: IMatchesAwayTeams): ILeaderboardTeams[] {
+export default function leaderboardAwayGenerate(teams: IMatchesAwayTeams): ILeaderboardTeams[] {
   const result = [];
 
   for (let i = 0; i < arrayUniqueTeams(teams).length; i += 1) {
@@ -133,5 +122,5 @@ export default function leaderboardHomeGenerate(teams: IMatchesAwayTeams): ILead
     result.push(currentTeam);
   }
 
-  return sortResult(result as unknown as ILeaderboardTeams);
+  return sortLeaderboard(result as unknown as ILeaderboardTeams);
 }
