@@ -8,7 +8,13 @@ import User from '../database/models/User';
 
 import { Response } from 'superagent';
 import tokenGenerate from '../utils/tokenGenerate';
-import { bodyLogin, loginEmailOrPasswordInvalid, loginWhitoutEmail, loginWhitoutPassword, resultFindOne } from './mocks/login';
+import {
+  bodyLogin,
+  loginEmailOrPasswordInvalid,
+  loginWhitoutEmail,
+  loginWhitoutPassword,
+  resultFindOne
+} from './mocks/login';
 
 
 chai.use(chaiHttp);
@@ -19,8 +25,6 @@ describe('Testando API Trybe Fuebol Clube', () => {
   describe('Testa endpoint /login', () => {
     // TRIPLE AAA
     // ARRANGE - arranjar / arrumar
-    const token = tokenGenerate(resultFindOne);
-
     beforeEach(async () => {
       sinon
         .stub(User, 'findOne')
@@ -31,8 +35,10 @@ describe('Testando API Trybe Fuebol Clube', () => {
       (User.findOne as sinon.SinonStub).restore();
     });
 
+
     it('Retorna um token ao se logar corretamente', async () => {
       // ACT - agir / executar
+      const token = tokenGenerate(resultFindOne);
       const httpResponse = await chai
         .request(app)
         .post('/login')
@@ -73,19 +79,20 @@ describe('Testando API Trybe Fuebol Clube', () => {
         .send(loginEmailOrPasswordInvalid)
       // ASSERT - verificar
       expect(httpResponse.status).to.equal(401);
-      expect(httpResponse.body).to.be.deep.equal({ message: 'Incorrect email or password'});
+      expect(httpResponse.body).to.be.deep.equal({ message: 'Incorrect email or password' });
     })
 
     describe('Testa endpoint /login/validate', () => {
       it('Retorna status 200 com um objeto contendo o role do user', async () => {
         // ACT - agir / executar
+        const token = tokenGenerate(resultFindOne);
         const httpResponse = await chai
           .request(app)
           .get('/login/validate')
           .set('Authorization', token)
         // ASSERT - verificar
         expect(httpResponse.status).to.equal(200);
-        expect(httpResponse.body).to.be.deep.equal({role: resultFindOne.role});
+        expect(httpResponse.body).to.be.deep.equal({ role: resultFindOne.role });
       })
     })
   });
