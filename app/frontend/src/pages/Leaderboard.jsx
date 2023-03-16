@@ -4,6 +4,7 @@ import LeaderboardTable from '../components/LeaderboardTable';
 import LoginBtn from '../components/LoginBtn';
 import MatchesBtn from '../components/MatchesBtn';
 import TableFilter from '../components/TableFilter';
+import { classificationBtn } from '../images';
 import '../styles/pages/leaderboard.css';
 
 const Leaderboard = () => {
@@ -19,6 +20,7 @@ const Leaderboard = () => {
     <>
       <Header
         page="CLASSIFICAÇÃO"
+        pageIcon={classificationBtn}
         FirstNavigationLink={ MatchesBtn }
         SecondNavegationLink={ LoginBtn }
         logged={ logged }

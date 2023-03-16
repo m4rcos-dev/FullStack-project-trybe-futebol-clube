@@ -6,6 +6,7 @@ import '../styles/components/header.css';
 
 const Header = ({
   page,
+  pageIcon,
   FirstNavigationLink,
   SecondNavegationLink,
   logged,
@@ -25,7 +26,10 @@ const Header = ({
       <div className="image-content">
         <img src={ negativeLogo } alt="Trybe Futebol Clube Negative Logo" />
       </div>
-      <h1 data-testid="header__title">{ page }</h1>
+      <div className="title-content">
+        <img src={pageIcon} alt={page}/>
+        <h1 data-testid="header__title">{ page }</h1>
+      </div>
       <div className="buttons-content">
         <FirstNavigationLink />
         {
