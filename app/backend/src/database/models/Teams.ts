@@ -4,6 +4,7 @@ import db from '.';
 class Teams extends Model {
   id!: number;
   teamName!: string;
+  shield!: string;
 }
 
 Teams.init({
@@ -18,6 +19,11 @@ Teams.init({
     type: STRING,
     unique: true,
   },
+  shield: {
+    allowNull: false,
+    type: STRING,
+    defaultValue: 'teste',
+  }
 }, {
   underscored: true,
   sequelize: db,
