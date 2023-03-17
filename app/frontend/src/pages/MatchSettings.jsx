@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import MatchesBtn from '../components/MatchesBtn';
 import Loading from '../components/Loading';
 import api, { requestData, setToken } from '../services/requests';
+import { createMatcBtn, updateMatcBtn } from '../images';
 import '../styles/pages/matchSettings.css';
 
 const MatchSettings = () => {
@@ -86,6 +87,7 @@ const MatchSettings = () => {
       <>
         <Header
           page="EDITAR PARTIDA"
+          pageIcon={ updateMatcBtn }
           FirstNavigationLink={ MatchesBtn }
           logged={ isAuthenticated }
           setLogin={ setIsAuthenticated }
@@ -108,6 +110,7 @@ const MatchSettings = () => {
     <>
       <Header
         page="ADICIONAR PARTIDA"
+        pageIcon={ createMatcBtn }
         FirstNavigationLink={ MatchesBtn }
         logged={ isAuthenticated }
         setLogin={ setIsAuthenticated }
