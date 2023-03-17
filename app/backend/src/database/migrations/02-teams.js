@@ -15,7 +15,6 @@ module.exports = {
       shield: {
         allowNull: false,
         type: Sequelize.STRING,
-        defaultValue: 'teste',
       }
     })
   },

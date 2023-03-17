@@ -22,7 +22,6 @@ Teams.init({
   shield: {
     allowNull: false,
     type: STRING,
-    defaultValue: 'teste',
   }
 }, {
   underscored: true,
