@@ -7,6 +7,7 @@ import MatchesBtn from '../components/MatchesBtn';
 import Loading from '../components/Loading';
 import api, { requestData, setToken } from '../services/requests';
 import { createMatcBtn, updateMatcBtn } from '../images';
+import Helmet from 'react-helmet';
 import '../styles/pages/matchSettings.css';
 
 const MatchSettings = () => {
@@ -85,6 +86,7 @@ const MatchSettings = () => {
     } = location.state;
     return (
       <>
+        <Helmet title='TFC - Editar Partida' />
         <Header
           page="EDITAR PARTIDA"
           pageIcon={ updateMatcBtn }
@@ -108,6 +110,7 @@ const MatchSettings = () => {
 
   return (
     <>
+      <Helmet title='TFC - Adicionar Partida' />
       <Header
         page="ADICIONAR PARTIDA"
         pageIcon={ createMatcBtn }

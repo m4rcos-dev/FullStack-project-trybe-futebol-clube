@@ -6,6 +6,7 @@ import LeaderboardBtn from '../components/LeaderboardBtn';
 import LoginBtn from '../components/LoginBtn';
 import GamerFilter from '../components/GameFilter';
 import { matchsBtn } from '../images';
+import Helmet from 'react-helmet';
 import '../styles/pages/games.css';
 
 const Games = () => {
@@ -23,6 +24,7 @@ const Games = () => {
 
   return (
     <>
+      <Helmet title='TFC - Partidas' />
       <Header
         page="PARTIDAS"
         pageIcon={matchsBtn}

@@ -5,6 +5,7 @@ import LoginBtn from '../components/LoginBtn';
 import MatchesBtn from '../components/MatchesBtn';
 import TableFilter from '../components/TableFilter';
 import { classificationBtn } from '../images';
+import Helmet  from 'react-helmet';
 import '../styles/pages/leaderboard.css';
 
 const Leaderboard = () => {
@@ -18,6 +19,7 @@ const Leaderboard = () => {
 
   return (
     <>
+      <Helmet title='TFC - Classificação' />
       <Header
         page="CLASSIFICAÇÃO"
         pageIcon={classificationBtn}
