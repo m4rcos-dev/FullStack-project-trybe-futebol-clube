@@ -72,6 +72,10 @@
   );
 }
 
+#logo-header {
+  background: inherit;
+}
+
 .buttons-content {
   align-items: center;
   display: flex;

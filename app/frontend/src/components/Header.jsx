@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { negativeLogo, exitToAppImg } from '../images';
 import '../styles/components/header.css';
 
@@ -24,7 +24,9 @@ const Header = ({
   return (
     <header className="common-header">
       <div className="image-content">
+        <Link id='logo-header' to="/leaderboard">
         <img src={ negativeLogo } alt="Trybe Futebol Clube Negative Logo" />
+        </Link>
       </div>
       <div className="title-content">
         <img src={pageIcon} alt={page}/>
