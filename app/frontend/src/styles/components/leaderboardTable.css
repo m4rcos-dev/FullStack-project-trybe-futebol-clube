@@ -23,6 +23,17 @@
   text-align: center;
 }
 
+.score-board-table-section img {
+  width: 22px;
+  margin-right: 10px;
+}
+
+.score-board-table-section div {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
 .score-board-classification {
   background: #023031;
   border-radius: 8px;

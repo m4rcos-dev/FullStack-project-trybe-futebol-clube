@@ -63,6 +63,7 @@ const LeaderboardTable = ({ currentFilter }) => {
           {
             leaderboard.map(({
               name,
+              shield,
               totalPoints,
               totalGames,
               totalVictories,
@@ -85,7 +86,10 @@ const LeaderboardTable = ({ currentFilter }) => {
                   className="score-board-team-name"
                   data-testid={ `score_boarding__team_name_${index + 1}` }
                 >
+                  <div>
+                  <img src={shield} alt={name}/>
                   {name}
+                  </div>
                 </td>
                 <td
                   className="score-board-total-points"
