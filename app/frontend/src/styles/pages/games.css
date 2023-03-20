@@ -139,7 +139,7 @@
   border-radius: 8px;
   color: #036b52;
   font-family: Verdana , Tahoma , sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   height: 45px;
   justify-content: center;
@@ -170,6 +170,28 @@
   padding: 12px 16px;
   text-align: center;
   width: 50px;
+}
+
+.games-table-home-img-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.games-table-home-img-content img {
+  width: 22px;
+  margin-left: 10px;
+}
+
+.games-table-away-img-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.games-table-away-img-content img {
+  width: 22px;
+  margin-right: 10px;
 }
 
 .games-table-tbody-status {
