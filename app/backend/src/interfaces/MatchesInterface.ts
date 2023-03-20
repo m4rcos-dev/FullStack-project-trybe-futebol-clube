@@ -8,9 +8,11 @@ export interface IMatches {
     inProgress: boolean;
     homeTeam?: {
       teamName: string;
+      shield: string;
     },
     awayTeam?: {
       teamName: string;
+      shield: string;
     }
   }
 }

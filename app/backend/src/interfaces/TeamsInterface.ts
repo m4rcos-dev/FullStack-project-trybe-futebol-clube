@@ -2,12 +2,14 @@ export interface ITeams {
   [index: number]: {
     id: number;
     teamName: string;
+    shield: string;
   }
 }
 
 export interface ITeam {
   id: number;
   teamName: string;
+  shield: string;
 }
 
 export interface ITeamsResult {
