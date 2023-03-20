@@ -1,4 +1,5 @@
 import React from 'react';
+import { loadingAnimate } from '../images';
 import { Player } from '@lottiefiles/react-lottie-player';
 
 const Loading = () => (
@@ -6,7 +7,7 @@ const Loading = () => (
    <Player
     autoplay
     loop
-    src="https://assets4.lottiefiles.com/packages/lf20_xFpiNt.json"
+    src={loadingAnimate}
     style={{ height: '300px', width: '300px', marginTop: '270px'}}
    />
   </div>

@@ -8,3 +8,4 @@ export { default as matchsBtn } from './matchs_btn.png';
 export { default as loginBtn } from './login_btn.png';
 export { default as createMatcBtn} from './create_match_btn.png';
 export { default as updateMatcBtn } from './update_match_btn.png';
+export { default as loadingAnimate } from './loading.json'
