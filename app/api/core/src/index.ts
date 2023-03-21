@@ -12,3 +12,5 @@ export const handler = ServerlessAdapter.new(app)
   .setResolver(new PromiseResolver())
   .addAdapter(new ApiGatewayV2Adapter())
   .build();
+
+  // deploy
