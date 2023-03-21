@@ -8,6 +8,7 @@ export interface IMatchesHomeTeams {
     inProgress: boolean,
     homeTeam?: {
       teamName: string,
+      shield: string,
     },
   }
   length: number;
@@ -23,6 +24,7 @@ export interface IMatchesAwayTeams {
     inProgress: boolean,
     awayTeam?: {
       teamName: string,
+      shield: string,
     },
   }
   length: number;
@@ -38,9 +40,11 @@ export interface IMatchesTeam {
     inProgress: boolean;
     homeTeam?: {
       teamName: string;
+      shield: string;
     },
     awayTeam?: {
       teamName: string,
+      shield: string,
     },
   }
   length: number;

@@ -5,6 +5,8 @@ import LeaderboardBtn from '../components/LeaderboardBtn';
 import MatchesBtn from '../components/MatchesBtn';
 import { requestLogin, setToken, requestData } from '../services/requests';
 import { positiveLogo } from '../images';
+import { loginBtn } from '../images';
+import Helmet from 'react-helmet';
 import '../styles/pages/login.css';
 
 const Login = () => {
@@ -41,8 +43,10 @@ const Login = () => {
 
   return (
     <>
+      <Helmet title='TFC - Login' />
       <Header
         page="LOGIN"
+        pageIcon={loginBtn}
         FirstNavigationLink={ LeaderboardBtn }
         SecondNavegationLink={ MatchesBtn }
       />

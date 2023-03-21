@@ -32,8 +32,12 @@ const leaderboardAllGenerate = (teams: IMatchesTeam) => {
     const filterTeam = Object.values(teams)
       .filter((teamFilter) => teamFilter.homeTeam?.teamName === team
       || teamFilter.awayTeam?.teamName === team);
+    const filterShield = filterTeam[0].homeTeam?.teamName === team
+      ? filterTeam[0].homeTeam?.shield
+      : filterTeam[0].awayTeam?.shield;
     currentTeam = {
       name: team,
+      shield: filterShield,
       ...createLeaderboard(filterTeam, team as string),
     };
     result.push(currentTeam);

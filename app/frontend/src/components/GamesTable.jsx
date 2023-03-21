@@ -72,7 +72,10 @@ const GamesTable = ({ currentFilter, isAdm }) => {
                   className="games-table-tbody-home-team"
                   data-testid={ `matches__home_team_${id}` }
                 >
+                  <div className='games-table-home-img-content'>
                   { homeTeam.teamName }
+                  <img src={homeTeam.shield} alt={homeTeam.teamName} />
+                  </div>
                 </td>
                 <td
                   className="games-table-tbody-home-team-goals"
@@ -91,7 +94,10 @@ const GamesTable = ({ currentFilter, isAdm }) => {
                   className="games-table-tbody-away-team"
                   data-testid={ `matches__away_team_${id}` }
                 >
+                  <div className='games-table-away-img-content'>
+                  <img src={awayTeam.shield} alt={awayTeam.teamName} />
                   { awayTeam.teamName }
+                  </div>
                 </td>
                 <td className="games-table-tbody-empty-space">{ ' ' }</td>
                 <td className="games-table-tbody-status">

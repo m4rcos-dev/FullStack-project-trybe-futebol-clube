@@ -5,6 +5,8 @@ import AddNewMatchBtn from '../components/AddNewMatchBtn';
 import LeaderboardBtn from '../components/LeaderboardBtn';
 import LoginBtn from '../components/LoginBtn';
 import GamerFilter from '../components/GameFilter';
+import { matchsBtn } from '../images';
+import Helmet from 'react-helmet';
 import '../styles/pages/games.css';
 
 const Games = () => {
@@ -16,14 +18,16 @@ const Games = () => {
     const token = localStorage.getItem('token') || false;
     const role = localStorage.getItem('role') || false;
     if (token) setLogin(true);
-    
+
     setIsAdm(role === 'admin');
   }, []);
 
   return (
     <>
+      <Helmet title='TFC - Partidas' />
       <Header
         page="PARTIDAS"
+        pageIcon={matchsBtn}
         FirstNavigationLink={ LeaderboardBtn }
         SecondNavegationLink={ LoginBtn }
         logged={ logged }

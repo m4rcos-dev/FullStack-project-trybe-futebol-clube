@@ -30,6 +30,7 @@ const leaderboardHomeGenerate = (teams: IMatchesTeam) => {
       || teamFilter.awayTeam?.teamName === team);
     currentTeam = {
       name: team,
+      shield: filterTeam[0].homeTeam?.shield,
       ...createLeaderboard(filterTeam, team as string),
     };
     result.push(currentTeam);
