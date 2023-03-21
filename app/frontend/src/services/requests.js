@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: `backend/:${process.env.REACT_APP_API_PORT}`,
+  baseURL: `https://trybefutebolclub.bohr.io/api`,
 });
 
 export const setToken = (token) => {
