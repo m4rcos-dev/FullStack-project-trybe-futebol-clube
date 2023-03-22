@@ -3,7 +3,6 @@ WORKDIR /app-backend
 COPY package* ./
 RUN npm install
 COPY . .
-EXPOSE 3001
 ARG EnvironmentVariable
 ENTRYPOINT [ "npm", "run" ]
 CMD [ "start" ]
