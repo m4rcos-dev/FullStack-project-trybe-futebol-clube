@@ -26,6 +26,34 @@
   width: 288px;
 }
 
+.title-mobile-content {
+  display: flex;
+  margin: 5px;
+  justify-content: center;
+  width: 100%;
+}
+
+@media only screen and (min-width: 700px) {
+  .title-mobile-content  {
+    display: none;
+  }
+}
+
+.title-mobile-content img {
+  width: 10%;
+}
+
+.title-mobile-content h1 {
+  align-items: center;
+  /* color: white; */
+  font-family: Verdana , Tahoma , sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  line-height: 36px;
+  text-align: center;
+}
+
+
 .classification-handlers form button {
   align-self: flex-end;
   background: #003be5;

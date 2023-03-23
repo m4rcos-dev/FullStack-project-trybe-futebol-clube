@@ -7,6 +7,7 @@ import TableFilter from '../components/TableFilter';
 import { classificationBtn } from '../images';
 import Helmet  from 'react-helmet';
 import '../styles/pages/leaderboard.css';
+import TitleMobile from '../components/TitleMobile';
 
 const Leaderboard = () => {
   const [logged, setLogin] = useState(false);
@@ -27,6 +28,10 @@ const Leaderboard = () => {
         SecondNavegationLink={ LoginBtn }
         logged={ logged }
         setLogin={ setLogin }
+      />
+      <TitleMobile
+        page="CLASSIFICAÇÃO"
+        pageIcon={classificationBtn}
       />
       {/* <div className="classification-handlers score-board-table-section">
         <TableFilter
