@@ -1,3 +1,5 @@
+#### EN - English [(Versão em Português Brasil aqui)](https://github.com/m4rcos-dev/FullStack-project-trybe-futebol-clube/blob/main/README_pt-br.md)
+
 <h1 align="center">🎉 Welcome to my TFC - Trybe Futebol Clube project repository </h1>
 
 ![swagger documetation blogs api](https://user-images.githubusercontent.com/104791582/227270241-972e482f-f3f8-46c5-a4a5-43fb2d7bc9e3.gif)
