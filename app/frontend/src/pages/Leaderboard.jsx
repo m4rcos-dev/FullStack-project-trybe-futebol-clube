@@ -38,8 +38,8 @@ const Leaderboard = () => {
           currentFilter={ currentFilter }
           setCurrentFilter={ setCurrentFilter }
         />
-      </div> */}
-      {/* <LeaderboardTable
+      </div>
+      <LeaderboardTable
         currentFilter={ currentFilter }
         setCurrentFilter={ setCurrentFilter }
       /> */}

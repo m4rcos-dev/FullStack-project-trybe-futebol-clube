@@ -45,7 +45,8 @@
 
 .title-mobile-content h1 {
   align-items: center;
-  /* color: white; */
+  color: white;
+  -webkit-text-stroke: 0.5px black;
   font-family: Verdana , Tahoma , sans-serif;
   font-size: 15px;
   font-style: normal;
