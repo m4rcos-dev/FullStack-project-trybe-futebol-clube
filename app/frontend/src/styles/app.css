@@ -8,11 +8,11 @@
   min-width: max-content;
 }
 
-body {
+/* body {
   background-image: url('../images/bg.jpg');
   background-size: cover;
   font-family: Montserrat,sans-serif;
   box-sizing: border-box;
   height: 100%;
   margin: 0;
-}
+} */

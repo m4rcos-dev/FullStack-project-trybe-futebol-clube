@@ -28,16 +28,16 @@ const Leaderboard = () => {
         logged={ logged }
         setLogin={ setLogin }
       />
-      <div className="classification-handlers score-board-table-section">
+      {/* <div className="classification-handlers score-board-table-section">
         <TableFilter
           currentFilter={ currentFilter }
           setCurrentFilter={ setCurrentFilter }
         />
-      </div>
-      <LeaderboardTable
+      </div> */}
+      {/* <LeaderboardTable
         currentFilter={ currentFilter }
         setCurrentFilter={ setCurrentFilter }
-      />
+      /> */}
     </>
   );
 };
